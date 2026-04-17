@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #f59e0b;
+  --primary-dark: #b45309;
+  --secondary: #ef4444;
+  --bg-dark: #0f172a;
+  --font-main: 'Outfit', sans-serif;
+}
+
+body {
+  font-family: var(--font-outfit), sans-serif;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  overflow-x: hidden;
+}
+
+/* Premium Heading Style (The one user likes) */
+.section-heading {
+  font-size: 3.2rem; /* Increased for better presence */
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+  position: relative;
+  display: inline-block;
+}
+
+@media (max-width: 768px) {
+  .section-heading {
+    font-size: 2rem;
+  }
+}
+
+.heading-underline {
+  height: 4px;
+  width: 60px;
+  background: var(--primary);
+  border-radius: 99px;
+  margin-top: 0.5rem;
+}
+
+.heading-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Glassmorphism Navbar */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.nav-link {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+.section-padding {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+/* Premium Card Hover */
+.premium-card {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.premium-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+}
