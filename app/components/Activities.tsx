@@ -59,7 +59,7 @@ export default function Activities() {
   return (
     <div id="services">
       {/* Header Section */}
-      <section className="py-16 bg-white border-b border-slate-100">
+      <section className="py-8 bg-white border-b border-slate-100">
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-24">
           <div className="flex flex-col items-center text-center">
             <span className="flex items-center gap-2 text-amber-600 font-bold uppercase tracking-widest text-[12px] mb-3">
@@ -73,56 +73,54 @@ export default function Activities() {
         </div>
       </section>
 
-      {/* Individual Activity Sections (Separate Backgrounds) */}
-      {activities.map((act, idx) => (
-        <section key={act.title} className={`py-20 ${act.bg} border-b border-slate-100/50 overflow-hidden`}>
-          <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-24">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className={`flex flex-col ${
-                idx % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-              } items-center gap-12 lg:gap-32`}
-            >
-              {/* Image Section */}
-              <div className="flex-1 w-full group relative">
-                <div className="relative h-[300px] md:h-[450px] w-full rounded-[2.5rem] overflow-hidden shadow-2xl border-2 border-slate-100 p-2 bg-white">
-                  <div className="relative w-full h-full rounded-[2rem] overflow-hidden">
-                    <Image
-                      src={act.img}
-                      alt={act.title}
-                      fill
-                      className="object-cover transition-transform duration-[2s] group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      {/* Activities Grid Section */}
+      <section className="py-14 bg-[#fafafa]">
+        <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {activities.map((act, idx) => (
+              <motion.div
+                key={act.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                className="group flex flex-col h-full bg-white rounded-[3rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100"
+              >
+                {/* Image Wrapper */}
+                <div className="relative h-[220px] w-full overflow-hidden">
+                  <Image
+                    src={act.img}
+                    alt={act.title}
+                    fill
+                    className="object-cover transition-transform duration-[1.5s] group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  {/* Number Badge */}
+                  <div className="absolute top-6 left-6 w-12 h-12 bg-amber-500 text-white rounded-2xl flex items-center justify-center font-black text-xl shadow-xl border-2 border-white/20 backdrop-blur-sm">
+                    {idx + 1}
                   </div>
                 </div>
-                {/* Number Badge */}
-                <div className={`absolute -top-6 ${idx % 2 === 0 ? "-left-6" : "-right-6"} w-16 h-16 bg-amber-500 text-white rounded-2xl flex items-center justify-center font-black text-2xl shadow-2xl border-4 border-white`}>
-                  {idx + 1}
-                </div>
-              </div>
 
-              {/* Text Section */}
-              <div className="flex-1 space-y-8">
-                <h3 className="text-3xl md:text-[42px] font-[900] text-slate-900 leading-tight">
-                  {act.title}
-                </h3>
-                <p className="text-slate-600 text-lg md:text-[21px] leading-relaxed font-medium opacity-80">
-                  {act.desc}
-                </p>
-                <div className="pt-4">
-                  <button className="h-14 px-8 rounded-xl bg-amber-500 text-white font-bold text-lg hover:bg-amber-600 transition-all flex items-center gap-3 group shadow-lg shadow-amber-500/20">
-                    Learn More <ArrowRight className="transition-transform group-hover:translate-x-2" />
-                  </button>
+                {/* Content Section */}
+                <div className="p-7 flex flex-col flex-grow space-y-3 text-center items-center">
+                  <h3 className="text-2xl font-[900] text-slate-900 group-hover:text-amber-600 transition-colors leading-tight">
+                    {act.title}
+                  </h3>
+                  <p className="text-slate-500 text-[16px] leading-relaxed font-medium opacity-80 group-hover:opacity-100 transition-opacity line-clamp-3">
+                    {act.desc}
+                  </p>
+                  <div className="pt-4 mt-auto">
+                    <button className="flex items-center gap-2 text-amber-600 font-black uppercase tracking-widest text-[11px] group-hover:gap-4 transition-all">
+                      Learn More <ArrowRight size={16} />
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            ))}
           </div>
-        </section>
-      ))}
+        </div>
+      </section>
     </div>
   );
 }

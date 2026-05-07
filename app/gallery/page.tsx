@@ -27,11 +27,11 @@ export default function GalleryPage() {
   const filteredImages = filter === "All" ? galleryImages : galleryImages.filter(img => img.cat === filter);
 
   return (
-    <div className="pt-[140px] pb-24 bg-white min-h-screen">
+    <div className="pt-[110px] pb-12 bg-white min-h-screen">
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-24">
         
         {/* Gallery Header */}
-        <div className="flex flex-col items-center text-center mb-16">
+        <div className="flex flex-col items-center text-center mb-10">
           <span className="flex items-center gap-2 text-amber-600 font-bold uppercase tracking-widest text-[12px] mb-3">
              <Camera size={16} /> Captured Moments
           </span>
@@ -45,7 +45,7 @@ export default function GalleryPage() {
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex flex-wrap justify-center gap-4 mb-16">
+        <div className="flex flex-wrap justify-center gap-4 mb-10">
           {categories.map((cat) => (
             <button
               key={cat}
@@ -75,21 +75,31 @@ export default function GalleryPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.5 }}
-                className="group relative h-[350px] rounded-[2.5rem] overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all"
+                className="group flex flex-col cursor-pointer"
                 onClick={() => setSelectedImg(img.src)}
               >
-                <Image
-                  src={img.src}
-                  alt={img.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
-                   <span className="text-amber-400 font-black text-xs uppercase tracking-widest mb-2">{img.cat}</span>
-                   <h3 className="text-white font-black text-xl leading-tight">{img.title}</h3>
-                   <div className="mt-4 w-10 h-10 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center text-white">
-                      <Maximize2 size={18} />
-                   </div>
+                <div className="relative h-[320px] rounded-[2.5rem] overflow-hidden shadow-xl group border-4 border-white">
+                  <Image
+                    src={img.src}
+                    alt={img.title}
+                    fill
+                    className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                  />
+                  
+                  {/* Premium Dark Glass Footer */}
+                  <div className="absolute bottom-0 left-0 right-0 bg-slate-900/90 backdrop-blur-xl p-5 text-center border-t border-white/10 transition-all duration-500 group-hover:bg-amber-600/90">
+                    <span className="text-amber-400 group-hover:text-white font-black text-[10px] uppercase tracking-[0.3em] mb-1 block transition-colors">
+                      {img.cat}
+                    </span>
+                    <h3 className="text-white font-[900] text-[17px] leading-tight tracking-tight">
+                      {img.title}
+                    </h3>
+                  </div>
+
+                  {/* Hover Icon */}
+                  <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-md p-2 rounded-xl text-white opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+                    <Maximize2 size={18} />
+                  </div>
                 </div>
               </motion.div>
             ))}

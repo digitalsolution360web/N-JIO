@@ -45,7 +45,7 @@ export default function Hero() {
       </div>
       
       {/* HERO TEXT CONTENT (Professional Size & Tight Spacing) */}
-      <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-24 py-8 md:py-10">
+      <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-24 py-4 md:py-6">
         <div className="flex flex-col lg:flex-row gap-12 items-start">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -60,7 +60,7 @@ export default function Hero() {
               </span>
             </div>
             
-            <h1 className="text-4xl md:text-[62px] font-[900] text-slate-950 leading-[1] tracking-tight max-w-2xl">
+            <h1 className="text-2xl md:text-[42px] font-[900] text-slate-950 leading-[1.2] tracking-tight max-w-2xl">
               Service to <br/>
               <span className="text-amber-600 italic">Humanity</span> <br/>
               is the Greatest Duty

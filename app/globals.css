@@ -17,7 +17,7 @@ body {
 
 /* Premium Heading Style (The one user likes) */
 .section-heading {
-  font-size: 3.2rem; /* Increased for better presence */
+  font-size: 2.25rem; /* Reduced further for maximum professionalism */
   font-weight: 800;
   letter-spacing: -0.02em;
   color: #0f172a;
@@ -27,7 +27,7 @@ body {
 
 @media (max-width: 768px) {
   .section-heading {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -93,8 +93,8 @@ body {
 }
 
 .section-padding {
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
 
 /* Premium Card Hover */

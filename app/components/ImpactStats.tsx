@@ -41,7 +41,7 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 
 export default function ImpactStats() {
   return (
-    <section className="py-12 bg-slate-900 text-white relative overflow-hidden">
+    <section className="py-8 bg-slate-900 text-white relative overflow-hidden">
       {/* Decals */}
       <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
         <svg className="w-full h-full" viewBox="0 0 100 100" fill="none">
@@ -51,7 +51,7 @@ export default function ImpactStats() {
       </div>
 
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-24">
-        <div className="flex flex-col items-center text-center mb-12">
+        <div className="flex flex-col items-center text-center mb-8">
           <motion.span 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -62,14 +62,14 @@ export default function ImpactStats() {
           <motion.h2 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            className="text-4xl md:text-6xl font-[900] leading-tight"
+            className="text-2xl md:text-4xl font-[900] leading-tight"
           >
             Numbers that Tell <br/> Our <span className="text-amber-500 italic">Selfless Journey</span>
           </motion.h2>
           <div className="h-1.5 w-24 bg-amber-500 rounded-full mt-8" />
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((stat, i) => (
             <motion.div
               key={i}
@@ -82,7 +82,7 @@ export default function ImpactStats() {
                 <div className={`${stat.bg} ${stat.color} w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform`}>
                   <stat.icon size={40} />
                 </div>
-                <h3 className="text-4xl md:text-5xl font-[1000] mb-2 tracking-tighter">
+                <h3 className="text-2xl md:text-3xl font-[1000] mb-2 tracking-tighter">
                   <Counter value={stat.val} suffix={stat.suffix} />
                 </h3>
                 <p className="text-slate-400 font-bold uppercase tracking-widest text-xs">

@@ -5,11 +5,11 @@ import { Phone, Mail, MapPin, Send, MessageSquare, Clock, ArrowRight } from "luc
 
 export default function ContactPage() {
   return (
-    <div className="pt-[140px] pb-24 bg-white min-h-screen">
+    <div className="pt-[140px] pb-12 bg-white min-h-screen">
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-24">
         
         {/* Header */}
-        <div className="flex flex-col items-center text-center mb-20">
+        <div className="flex flex-col items-center text-center mb-12">
           <span className="flex items-center gap-2 text-amber-600 font-bold uppercase tracking-widest text-[12px] mb-3">
              <MessageSquare size={16} /> Get In Touch
           </span>
@@ -26,9 +26,9 @@ export default function ContactPage() {
           
           {/* Contact Details Card */}
           <div className="lg:col-span-4 space-y-8">
-            <div className="bg-slate-900 text-white p-12 rounded-[3.5rem] shadow-2xl relative overflow-hidden group">
+            <div className="bg-slate-900 text-white p-8 rounded-[3rem] shadow-2xl relative overflow-hidden group">
                <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500 opacity-10 rounded-full -mr-16 -mt-16 blur-2xl" />
-               <h3 className="text-3xl font-black mb-10">Contact Information</h3>
+               <h3 className="text-2xl font-black mb-6">Contact Information</h3>
                
                <ul className="space-y-10">
                  {[
@@ -72,7 +72,7 @@ export default function ContactPage() {
           {/* Contact Form */}
           <div className="lg:col-span-8">
             <div className="bg-white p-2 md:p-4 rounded-[4rem] border-2 border-slate-50 shadow-sm relative">
-              <div className="bg-slate-50 px-10 py-16 md:p-20 rounded-[3.5rem]">
+              <div className="bg-slate-50 px-8 py-10 md:p-14 rounded-[3rem]">
                 <h3 className="text-3xl font-[900] text-slate-900 mb-10">Send us a <span className="text-amber-500 italic">Message</span></h3>
                 
                 <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
@@ -113,7 +113,7 @@ export default function ContactPage() {
         </div>
 
         {/* Map Placeholder */}
-        <div className="mt-24 h-[500px] bg-slate-100 rounded-[4rem] overflow-hidden relative border-8 border-white shadow-2xl group">
+        <div className="mt-12 h-[400px] bg-slate-100 rounded-[3rem] overflow-hidden relative border-8 border-white shadow-2xl group">
              <div className="absolute inset-0 bg-slate-900 opacity-0 group-hover:opacity-10 transition-opacity flex items-center justify-center cursor-pointer">
                  <div className="bg-white p-6 rounded-full shadow-2xl scale-0 group-hover:scale-100 transition-transform">
                     <MapPin size={32} className="text-amber-500" />
