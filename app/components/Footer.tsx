@@ -112,7 +112,7 @@ export default function Footer() {
             © 2025 <span className="text-white">Annapurna Mahabahu Sewa Sangh</span>. All Rights Reserved.
           </p>
           <p className="text-xs text-gray-500">
-            Designed & Developed by <a href="#" className="text-amber-500 hover:underline">DigitalSolution360.com</a>
+            Designed & Developed by <a href="#" className="text-amber-500 hover:underline">Digital Solution 360</a>
           </p>
         </div>
       </div>

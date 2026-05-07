@@ -6,17 +6,17 @@ import {
   Droplets, Utensils, HeartPulse, Heart,
   Leaf, Users, ShieldCheck,
   ArrowRight, Sparkles, Globe,
-  Hand, Gift, Lightbulb
+  Hand, Gift, Lightbulb, Phone
 } from "lucide-react";
 
 const services = [
   {
-    title: "Pure Water Initiative (Jal Seva)",
-    desc: "Dedicated to providing life-sustaining clean drinking water to communities, especially during the peak of summer, ensuring no one suffers from thirst in the face of extreme conditions.",
+    title: "Life-Saving Blood Donation Camps",
+    desc: "We bridge the gap between donors and patients by organizing regular blood donation drives, ensuring local hospitals have a steady supply of life-saving resources for medical emergencies.",
     img: "/s1.webp",
-    icon: Droplets,
-    color: "text-blue-600",
-    bg: "bg-blue-50/50"
+    icon: HeartPulse,
+    color: "text-rose-600",
+    bg: "bg-rose-50/50"
   },
   {
     title: "Nutritional Support (Bhandara Seva)",
@@ -27,12 +27,12 @@ const services = [
     bg: "bg-amber-50/50"
   },
   {
-    title: "Life-Saving Blood Donation Camps",
-    desc: "We bridge the gap between donors and patients by organizing regular blood donation drives, ensuring local hospitals have a steady supply of life-saving resources for medical emergencies.",
+    title: "Hospital & Emergency Relief",
+    desc: "Providing immediate medical assistance and support to patients and their families at major healthcare centers, ensuring they have the care and resources needed during crises.",
     img: "/s3.webp",
-    icon: HeartPulse,
-    color: "text-rose-600",
-    bg: "bg-rose-50/50"
+    icon: ShieldCheck,
+    color: "text-teal-600",
+    bg: "bg-teal-50/50"
   },
   {
     title: "Elderly Care & Dignity (Vriddhashram)",
@@ -43,12 +43,12 @@ const services = [
     bg: "bg-purple-50/50"
   },
   {
-    title: "Hospital & Emergency Relief",
-    desc: "Specifically targeting major medical centers like Safdarjung Hospital to provide immediate nutritional support and essential relief to patients and their families during difficult times.",
+    title: "Social Empowerment & Awareness",
+    desc: "Advocating for equality and justice through awareness campaigns and grassroots initiatives that empower the marginalized and promote peace within our diverse society.",
     img: "/s5.png",
-    icon: ShieldCheck,
-    color: "text-teal-600",
-    bg: "bg-teal-50/50"
+    icon: Users,
+    color: "text-indigo-600",
+    bg: "bg-indigo-50/50"
   },
   {
     title: "Cultural & Spiritual Unity",
@@ -59,20 +59,20 @@ const services = [
     bg: "bg-orange-50/50"
   },
   {
-    title: "Social Empowerment & Awareness",
-    desc: "Advocating for equality and justice through awareness campaigns and grassroots initiatives that empower the marginalized and promote peace within our diverse society.",
-    img: "/s8.webp",
-    icon: Users,
-    color: "text-indigo-600",
-    bg: "bg-indigo-50/50"
-  },
-  {
     title: "Community Outreach Programs",
     desc: "Expanding our reach into local communities to identify and address immediate needs, providing customized assistance and resources to families in underserved areas.",
-    img: "/s9.webp",
+    img: "/s8.webp",
     icon: Hand,
     color: "text-cyan-600",
     bg: "bg-cyan-50/50"
+  },
+  {
+    title: "Pure Water Initiative (Jal Seva)",
+    desc: "Dedicated to providing life-sustaining clean drinking water to communities, especially during the peak of summer, ensuring no one suffers from thirst in the face of extreme conditions.",
+    img: "/s9.webp",
+    icon: Droplets,
+    color: "text-blue-600",
+    bg: "bg-blue-50/50"
   },
   {
     title: "Essential Distribution Drives",
@@ -134,13 +134,14 @@ export default function ServicesPage() {
               whileHover={{ y: -20 }}
               className="bg-white rounded-[2rem] overflow-hidden border border-slate-100 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.07)] hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.12)] transition-all group flex flex-col"
             >
-              {/* Card Image */}
-              <div className="relative h-[200px] w-full overflow-hidden">
+              {/* Card Image - Fixed aspect ratio to prevent cutting */}
+              <div className="relative aspect-[16/10] w-full overflow-hidden">
                 <Image
                   src={service.img}
                   alt={service.title}
                   fill
                   className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
 
@@ -205,12 +206,16 @@ export default function ServicesPage() {
           </motion.div>
         </section>
 
-        {/* Professional Trust Bar */}
-        <div className="flex flex-wrap justify-center gap-x-16 gap-y-8 py-4 opacity-40 border-t border-slate-100">
-          <p className="text-xl font-bold tracking-widest text-slate-400">TRANSPARENT</p>
-          <p className="text-xl font-bold tracking-widest text-slate-400">IMPACTFUL</p>
-          <p className="text-xl font-bold tracking-widest text-slate-400">DEDICATED</p>
-          <p className="text-xl font-bold tracking-widest text-slate-400">COMMUNITY-DRIVEN</p>
+        {/* Professional Trust Bar - UPDATED FOR VISIBILITY */}
+        <div className="flex flex-wrap justify-center gap-x-8 md:gap-x-16 gap-y-8 py-12 border-t border-slate-100">
+          {["TRANSPARENT", "IMPACTFUL", "DEDICATED", "COMMUNITY-DRIVEN"].map((text) => (
+            <div key={text} className="flex items-center gap-3 group/trust">
+              <div className="w-2 h-2 bg-amber-500 rounded-full group-hover/trust:scale-150 transition-transform shadow-[0_0_10px_rgba(245,158,11,0.5)]" />
+              <span className="text-slate-900 text-sm md:text-xl font-[1000] tracking-[0.3em] group-hover/trust:text-amber-600 transition-colors cursor-default uppercase">
+                {text}
+              </span>
+            </div>
+          ))}
         </div>
 
       </div>

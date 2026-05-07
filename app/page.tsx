@@ -1,5 +1,6 @@
 import Hero from "./components/Hero";
 import ImpactStats from "./components/ImpactStats";
+import GaneshPujaEvents from "./components/GaneshPujaEvents";
 import Activities from "./components/Activities";
 import AboutMissionVision from "./components/AboutMissionVision";
 
@@ -11,6 +12,9 @@ export default function Home() {
 
       {/* Animated Impact Numbers */}
       <ImpactStats />
+
+      {/* Ganesh Puja Event Section */}
+      <GaneshPujaEvents />
 
       {/* About, Mission, Vision, Why Choose Us, CTA */}
       <AboutMissionVision />

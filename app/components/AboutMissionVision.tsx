@@ -77,7 +77,7 @@ export default function AboutMissionVision() {
       </section>
 
       {/* Mission & Vision Section (Optimized Spacing) */}
-      <section className="py-12 bg-slate-900 text-white relative overflow-hidden">
+      {/* <section className="py-12 bg-slate-900 text-white relative overflow-hidden">
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-24">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             <motion.div
@@ -112,7 +112,7 @@ export default function AboutMissionVision() {
             </motion.div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Why Choose Us */}
       <section className="py-12 bg-white">

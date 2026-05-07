@@ -26,27 +26,53 @@ export default function Navbar() {
     { name: "Contact", href: "/contact" },
   ];
 
+  const notice = "Welcome to Annapurna Mahabahu Sewa Sangh";
+
   return (
     <>
-      {/* Top bar */}
-      <div className={`hidden md:block transition-all duration-300 ${isScrolled ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"} bg-slate-900 text-white py-2 fixed top-0 w-full z-[60]`}>
-        <div className="max-w-[1600px] mx-auto px-6 md:px-12 flex justify-between items-center text-[13px] font-medium tracking-wide">
-          <div className="flex gap-6">
-            <span className="flex items-center gap-2"><Phone size={14} className="text-amber-500" /> 7982034823</span>
-            <span className="flex items-center gap-2 underline decoration-amber-500/30 font-semibold tracking-tighter">info@annapurnamahabahu.com</span>
+      {/* Top bar - INCREASED SLIDER WIDTH VERSION */}
+      <div className={`hidden md:block transition-all ${isScrolled ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"} bg-slate-900 text-white py-2 fixed top-0 w-full z-[60] border-b border-white/5`}>
+        <div className="max-w-[1600px] mx-auto px-6 md:px-12 flex justify-between items-center text-[12px] font-medium tracking-wide relative">
+
+          {/* Left Side: Contact Info - FIXED IN POSITION */}
+          <div className="flex gap-8 items-center shrink-0 bg-slate-900 relative z-20 pr-8">
+            <span className="flex items-center gap-2 text-slate-300">
+              <Phone size={14} className="text-amber-500" />
+              7982034823
+            </span>
+            <div className="h-4 w-[1px] bg-slate-700" />
+            <span className="text-amber-500 font-black tracking-widest uppercase">Reg No: 1875</span>
           </div>
-          <div className="flex gap-4">
-            <span className="text-amber-500 font-bold">Registration No: 12345/2024</span>
+
+          {/* Right Side: SLIDER WITH INCREASED WIDTH (Extends to Screen Edge) */}
+          <div className="absolute right-[-200vw] left-[750px] lg:left-[700px] h-6 flex items-center overflow-hidden">
+            <motion.div
+              className="whitespace-nowrap"
+              initial={{ x: "100%" }} // Start from the absolute right edge of the screen
+              animate={{ x: "-100%" }} // Move all the way to the left
+              transition={{
+                duration: 9, // Very fast
+                repeat: Infinity,
+                ease: "linear"
+              }}
+            >
+              <div className="flex items-center gap-4">
+                <div className="w-2 h-2 bg-amber-500 rounded-full shadow-[0_0_10px_rgba(245,158,11,0.5)] animate-pulse" />
+                <span className="text-slate-100 font-[950] tracking-widest uppercase text-[11px] lg:text-[12px]">
+                  {notice}
+                </span>
+              </div>
+            </motion.div>
           </div>
+
         </div>
       </div>
 
       <nav
-        className={`fixed left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
-          isScrolled
-            ? "top-4 mx-4 md:mx-12 rounded-[2.5rem] glass-nav py-3 shadow-2xl shadow-slate-900/5 border border-white/50"
-            : "top-[40px] md:top-[36px] bg-white md:bg-transparent py-5"
-        }`}
+        className={`fixed left-0 right-0 z-50 transition-all duration-500 ease-in-out ${isScrolled
+          ? "top-4 mx-4 md:mx-12 rounded-[2.5rem] glass-nav py-3 shadow-2xl shadow-slate-900/5 border border-white/50"
+          : "top-[40px] md:top-[36px] bg-white md:bg-transparent py-5"
+          }`}
       >
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 group">
@@ -74,9 +100,8 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`text-[17px] font-bold tracking-wide nav-link ${
-                  isScrolled ? "text-slate-700 hover:text-amber-600" : "text-slate-900 hover:text-amber-600"
-                }`}
+                className={`text-[17px] font-bold tracking-wide nav-link ${isScrolled ? "text-slate-700 hover:text-amber-600" : "text-slate-900 hover:text-amber-600"
+                  }`}
               >
                 {link.name}
               </Link>

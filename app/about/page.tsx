@@ -2,13 +2,13 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { CheckCircle, Target, Eye, Heart, Sparkles, Users, Award } from "lucide-react";
+import { CheckCircle, Target, Eye, Heart, Sparkles, Users, Award, Phone } from "lucide-react";
 
 export default function AboutPage() {
   return (
-    <div className="pt-[140px] pb-12 space-y-14 bg-white">
+    <div className="pt-[140px] bg-white overflow-hidden">
       {/* About Hero Section */}
-      <section className="px-6 md:px-12 lg:px-24">
+      <section className="px-6 md:px-12 lg:px-24 py-16">
         <div className="max-w-[1600px] mx-auto">
           <div className="flex flex-col lg:flex-row items-center gap-16 md:gap-24">
             <div className="lg:w-1/2 space-y-8">
@@ -61,9 +61,9 @@ export default function AboutPage() {
       </section>
 
       {/* Who We Are & What We Do Section */}
-      <section className="py-12 bg-slate-50 border-y border-slate-100">
+      <section className="py-24 bg-slate-50 border-y border-slate-100">
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Who We Are */}
             <div className="space-y-8">
               <div className="flex flex-col items-start">
@@ -108,8 +108,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mission & Vision (Custom Card Theme) */}
-      <section className="px-6 md:px-12 lg:px-24">
+      {/* Mission & Vision Section */}
+      <section className="px-6 md:px-12 lg:px-24 py-24">
         <div className="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Mission */}
           <div className="bg-slate-900 h-full text-white p-12 md:p-16 rounded-[3.5rem] relative overflow-hidden group">
@@ -138,9 +138,9 @@ export default function AboutPage() {
       </section>
 
       {/* Our Values Section */}
-      <section className="py-12 bg-slate-50 relative overflow-hidden">
+      <section className="py-24 bg-slate-50 relative overflow-hidden">
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-24">
-          <div className="flex flex-col items-center text-center mb-10">
+          <div className="flex flex-col items-center text-center mb-16">
             <span className="text-amber-600 font-bold uppercase tracking-widest text-[12px] mb-3">Philosophy</span>
             <h2 className="section-heading">Our <span className="text-amber-500">Values</span></h2>
             <div className="heading-underline" />
@@ -169,59 +169,76 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Leadership Section - Added for Extra Credibility */}
-      <section className="py-12 bg-white">
-        <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-24">
-          <div className="flex flex-col items-center text-center mb-10">
-            <span className="text-amber-600 font-bold uppercase tracking-widest text-[12px] mb-3">Our Inspiration</span>
-            <h2 className="section-heading">Our <span className="text-amber-500">Leadership</span></h2>
-            <div className="heading-underline" />
-          </div>
+      {/* Final Call to Action Section */}
+      <section className="px-2 md:px-8 lg:px-20 py-10">
+        <div className="max-w-[1400px] mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="relative bg-[#0a0c14] rounded-[3rem] overflow-hidden p-5 md:p-10 text-center border border-white/5 shadow-2xl"
+          >
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[120px] -mr-64 -mt-64" />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {[1, 2, 3].map((i) => (
-              <motion.div
-                key={i}
-                whileHover={{ y: -15 }}
-                className="group relative"
-              >
-                <div className="relative h-[450px] w-full rounded-[3.5rem] overflow-hidden border-8 border-slate-50 shadow-xl">
-                  <div className="absolute inset-0 bg-slate-900 group-hover:bg-amber-600 transition-colors duration-500 z-10 opacity-0 group-hover:opacity-10" />
-                  <div className="absolute inset-0 flex items-end p-10 z-20">
-                    <div className="bg-white p-8 rounded-[2.5rem] w-full shadow-2xl transition-all group-hover:bg-slate-900">
-                      <h4 className="text-2xl font-black text-slate-900 group-hover:text-white leading-none">Founder Name</h4>
-                      <p className="text-amber-600 font-bold text-sm mt-3 uppercase tracking-widest">Managing Director</p>
-                    </div>
-                  </div>
-                  <div className="absolute bg-slate-200 inset-0" /> {/* Placeholder for image */}
-                </div>
-              </motion.div>
+            <div className="relative z-10 flex flex-col items-center">
+              <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-5 py-1 rounded-full mb-5 backdrop-blur-sm">
+                <div className="w-2 h-2 bg-amber-500 rounded-full animate-pulse" />
+                <span className="text-white text-[11px] font-black uppercase tracking-[0.2em]">Join the Movement</span>
+              </div>
+
+              <h2 className="text-4xl md:text-7xl font-[1000] leading-[1.1] tracking-tighter mb-8 text-white">
+                Empower Change <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">With Us</span>
+              </h2>
+
+              <p className="text-slate-400 text-xl md:text-2xl max-w-3xl mx-auto font-medium leading-relaxed mb-12">
+                Your dedication fuels our mission. Together, we can create a world where everyone lives with dignity.
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <button className="bg-amber-500 cursor-pointer hover:bg-amber-600 text-white px-12 py-5 rounded-2xl font-black text-xl shadow-2xl shadow-amber-500/20 transition-all hover:-translate-y-1 active:scale-95">
+                  Donate Now
+                </button>
+                <button className="bg-white/5 border cursor-pointer border-white/10 hover:bg-white/10 text-white px-12 py-5 rounded-2xl font-black text-xl transition-all">
+                  Be a Volunteer
+                </button>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Trust Indicators - IMPROVED VISIBILITY & BOLD */}
+          <div className="flex flex-wrap justify-center gap-x-8 md:gap-x-16 gap-y-8 mt-16 py-8 border-t border-slate-100">
+            {["TRANSPARENT", "IMPACTFUL", "DEDICATED", "COMMUNITY-DRIVEN"].map((text) => (
+              <div key={text} className="flex items-center gap-3 group/trust">
+                <div className="w-2 h-2 bg-amber-500 rounded-full group-hover/trust:scale-150 transition-transform shadow-[0_0_10px_rgba(245,158,11,0.5)]" />
+                <span className="text-slate-900 text-sm md:text-xl font-[1000] tracking-[0.3em] group-hover/trust:text-amber-600 transition-colors cursor-default uppercase">
+                  {text}
+                </span>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why We Care (Using ab2.png) */}
-      <section className="px-6 md:px-12 lg:px-24 pb-24">
-        <div className="max-w-[1600px] mx-auto flex flex-col lg:flex-row-reverse items-center gap-16 md:gap-24">
-          <div className="lg:w-1/2 space-y-8">
-            <h2 className="text-2xl md:text-[38px] font-[900] text-slate-900 leading-tight">
-              Every Small Act <br /> Creates a <span className="text-amber-500">Big Impact</span>
-            </h2>
-            <p className="text-slate-600 text-xl leading-relaxed font-medium opacity-80">
-              We believe that every small act of kindness can create a big impact in someone’s life. With your support, we can reach more hearts and feed more souls.
-            </p>
-            <div className="pt-6">
-              <button className="bg-slate-900 text-white px-12 py-5 rounded-2xl font-black text-xl hover:bg-slate-800 transition-all shadow-xl shadow-slate-900/10">
-                Support Our Mission
-              </button>
-            </div>
-          </div>
-          <div className="lg:w-1/2 relative">
-            <div className="relative h-[400px] md:h-[500px] w-full rounded-[3rem] overflow-hidden shadow-2xl">
-              <Image src="/ab2.png" alt="Kindness" fill className="object-cover" />
-            </div>
-            <div className="absolute -top-10 -left-10 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl" />
+      {/* Blue Contact Bar - NO GAP VERSION */}
+      <section className="relative bg-gradient-to-r from-blue-700 via-blue-600 to-blue-800 py-10 md:py-14 overflow-hidden border-t border-white/10">
+        {/* Subtle Decorative Elements */}
+
+        <div className=" max-w-[1600px] mx-auto px-6 text-center">
+          <h2 className="text-white text-3xl md:text-5xl font-[1000] tracking-tighter mb-6">Ready to Grow Your Impact?</h2>
+          <p className="text-blue-50 text-xl md:text-2xl font-medium mb-12 max-w-3xl mx-auto opacity-80 leading-relaxed">
+            Let's discuss how we can help you achieve your philanthropic goals and bring real change.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <button className="flex items-center gap-3 bg-white text-blue-700 px-12 py-5 rounded-2xl font-black text-xl hover:bg-blue-50 transition-all shadow-2xl hover:-translate-y-1 active:scale-95">
+              <Phone size={24} className="fill-blue-700/10" />
+              Call Us Now
+            </button>
+            <button className="flex items-center gap-3 bg-transparent border-2 border-white/40 text-white px-12 py-5 rounded-2xl font-black text-xl hover:bg-white/10 transition-all hover:border-white/60">
+              {/* <Image src="/whatsapp.png" alt="WhatsApp" width={24} height={24} className="invert opacity-90" /> */}
+              WhatsApp Us
+            </button>
           </div>
         </div>
       </section>
