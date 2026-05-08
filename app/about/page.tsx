@@ -2,16 +2,17 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { CheckCircle, Target, Eye, Heart, Sparkles, Users, Award, Phone } from "lucide-react";
 
 export default function AboutPage() {
   return (
     <div className="pt-[140px] bg-white overflow-hidden">
       {/* About Hero Section */}
-      <section className="px-6 md:px-12 lg:px-24 py-16">
+      <section className="px-6 md:px-12 lg:px-24 py-12 md:py-16">
         <div className="max-w-[1600px] mx-auto">
-          <div className="flex flex-col lg:flex-row items-center gap-16 md:gap-24">
-            <div className="lg:w-1/2 space-y-8">
+          <div className="flex flex-col lg:flex-row items-center gap-10 md:gap-16">
+            <div className="lg:w-1/2 space-y-6 md:space-y-8">
               <div className="flex items-center gap-3">
                 <span className="w-12 h-[2px] bg-amber-500" />
                 <span className="text-amber-600 text-sm font-black tracking-[0.2em] uppercase">
@@ -61,7 +62,7 @@ export default function AboutPage() {
       </section>
 
       {/* Who We Are & What We Do Section */}
-      <section className="py-24 bg-slate-50 border-y border-slate-100">
+      <section className="py-12 md:py-16 bg-slate-50 border-y border-slate-100">
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Who We Are */}
@@ -109,12 +110,12 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision Section */}
-      <section className="px-6 md:px-12 lg:px-24 py-24">
+      <section className="px-6 md:px-12 lg:px-24 py-12 md:py-16">
         <div className="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Mission */}
-          <div className="bg-slate-900 h-full text-white p-12 md:p-16 rounded-[3.5rem] relative overflow-hidden group">
+          <div className="bg-slate-900 h-full text-white p-8 md:p-12 rounded-[2.5rem] md:rounded-[3.5rem] relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500 opacity-10 rounded-full -mr-16 -mt-16 blur-2xl" />
-            <div className="w-20 h-20 bg-amber-500 rounded-3xl flex items-center justify-center mb-10 shadow-2xl shadow-amber-500/20 group-hover:rotate-12 transition-transform">
+            <div className="w-16 h-16 md:w-20 md:h-20 bg-amber-500 rounded-3xl flex items-center justify-center mb-6 md:mb-10 shadow-2xl shadow-amber-500/20 group-hover:rotate-12 transition-transform">
               <Target size={40} />
             </div>
             <h3 className="section-heading !text-white !mb-8">Our Mission</h3>
@@ -124,9 +125,9 @@ export default function AboutPage() {
           </div>
 
           {/* Vision */}
-          <div className="bg-blue-600 h-full text-white p-12 md:p-16 rounded-[3.5rem] relative overflow-hidden group">
+          <div className="bg-blue-600 h-full text-white p-8 md:p-12 rounded-[2.5rem] md:rounded-[3.5rem] relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16 blur-2xl" />
-            <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-3xl flex items-center justify-center mb-10 shadow-2xl group-hover:rotate-12 transition-transform">
+            <div className="w-16 h-16 md:w-20 md:h-20 bg-white/20 backdrop-blur-md rounded-3xl flex items-center justify-center mb-6 md:mb-10 shadow-2xl group-hover:rotate-12 transition-transform">
               <Eye size={40} />
             </div>
             <h3 className="section-heading !text-white !mb-8">Our Vision</h3>
@@ -138,9 +139,9 @@ export default function AboutPage() {
       </section>
 
       {/* Our Values Section */}
-      <section className="py-24 bg-slate-50 relative overflow-hidden">
+      <section className="py-12 md:py-16 bg-slate-50 relative overflow-hidden">
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-24">
-          <div className="flex flex-col items-center text-center mb-16">
+          <div className="flex flex-col items-center text-center mb-10 md:mb-12">
             <span className="text-amber-600 font-bold uppercase tracking-widest text-[12px] mb-3">Philosophy</span>
             <h2 className="section-heading">Our <span className="text-amber-500">Values</span></h2>
             <div className="heading-underline" />
@@ -156,9 +157,9 @@ export default function AboutPage() {
               <motion.div
                 key={value.title}
                 whileHover={{ y: -10 }}
-                className="p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm hover:shadow-2xl transition-all text-center"
+                className="p-8 md:p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm hover:shadow-2xl transition-all text-center"
               >
-                <div className={`${value.bg} ${value.color} w-16 h-16 rounded-2xl flex items-center justify-center mb-8 mx-auto shadow-sm`}>
+                <div className={`${value.bg} ${value.color} w-14 h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center mb-6 md:mb-8 mx-auto shadow-sm`}>
                   <value.icon size={28} />
                 </div>
                 <h4 className="text-xl font-black text-slate-900 leading-tight">{value.title}</h4>
@@ -186,7 +187,7 @@ export default function AboutPage() {
                 <span className="text-white text-[11px] font-black uppercase tracking-[0.2em]">Join the Movement</span>
               </div>
 
-              <h2 className="text-4xl md:text-7xl font-[1000] leading-[1.1] tracking-tighter mb-8 text-white">
+              <h2 className="text-2xl md:text-5xl font-[1000] leading-[1.1] tracking-tighter mb-3 text-white">
                 Empower Change <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">With Us</span>
               </h2>
@@ -196,12 +197,16 @@ export default function AboutPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <button className="bg-amber-500 cursor-pointer hover:bg-amber-600 text-white px-12 py-5 rounded-2xl font-black text-xl shadow-2xl shadow-amber-500/20 transition-all hover:-translate-y-1 active:scale-95">
-                  Donate Now
-                </button>
-                <button className="bg-white/5 border cursor-pointer border-white/10 hover:bg-white/10 text-white px-12 py-5 rounded-2xl font-black text-xl transition-all">
-                  Be a Volunteer
-                </button>
+                <Link href="/donate">
+                  <button className="bg-amber-500 cursor-pointer hover:bg-amber-600 text-white px-12 py-5 rounded-2xl font-black text-xl shadow-2xl shadow-amber-500/20 transition-all hover:-translate-y-1 active:scale-95">
+                    Donate Now
+                  </button>
+                </Link>
+                <Link href="/contact">
+                  <button className="bg-white/5 border cursor-pointer border-white/10 hover:bg-white/10 text-white px-12 py-5 rounded-2xl font-black text-xl transition-all">
+                    Be a Volunteer
+                  </button>
+                </Link>
               </div>
             </div>
           </motion.div>

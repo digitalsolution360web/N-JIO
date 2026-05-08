@@ -46,7 +46,7 @@ export default function GaneshPujaEvents() {
   };
 
   return (
-    <section className="py-16 bg-[#fffaf0] relative overflow-hidden">
+    <section className="pt-10 pb-16 bg-[#fffaf0] relative overflow-hidden" id="ganesh-puja">
       {/* Premium Background Elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Floating Mandalas */}
@@ -70,7 +70,7 @@ export default function GaneshPujaEvents() {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            className="flex items-center gap-3 mb-4"
+            className="flex items-center gap-3 mb-4 py-1"
           >
             <div className="h-[1.5px] w-10 md:w-16 bg-gradient-to-r from-transparent to-red-600" />
             <Sparkles className="text-red-600 w-5 h-5 animate-pulse" />
@@ -80,11 +80,11 @@ export default function GaneshPujaEvents() {
           <motion.h2
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-3xl md:text-5xl font-[1000] text-transparent bg-clip-text bg-gradient-to-b from-red-600 to-red-900 mb-2 tracking-tighter drop-shadow-sm"
+            className="text-3xl md:text-5xl font-[1000] text-transparent bg-clip-text bg-gradient-to-b from-red-600 to-red-900 mb-2 tracking-tighter drop-shadow-sm py-2 leading-normal"
           >
             !! श्री गणेशाय नमः !!
           </motion.h2>
-          
+
           <motion.h3
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -121,7 +121,7 @@ export default function GaneshPujaEvents() {
               className="group relative"
             >
               <div className="relative bg-white rounded-[2rem] overflow-hidden shadow-xl border border-slate-100/50 flex flex-col transition-all duration-500 group-hover:-translate-y-2">
-                
+
                 <div className={`h-2 w-full bg-gradient-to-r ${event.color}`} />
 
                 {/* Card Header */}
@@ -132,7 +132,7 @@ export default function GaneshPujaEvents() {
                       {event.title}
                     </h4>
                   </div>
-                  
+
                   <div className="inline-flex items-center gap-2 bg-white/80 px-4 py-1.5 rounded-full border border-slate-200/50 shadow-sm">
                     <Calendar className={`w-3.5 h-3.5 ${event.textColor}`} />
                     <span className="text-[10px] font-black text-slate-600 tracking-widest uppercase">{event.date}</span>
@@ -140,7 +140,7 @@ export default function GaneshPujaEvents() {
                 </div>
 
                 {/* Compact Video Thumbnail */}
-                <div 
+                <div
                   className="relative h-[220px] md:h-[240px] cursor-pointer overflow-hidden"
                   onClick={() => openVideo(event.videoUrl)}
                 >
@@ -148,9 +148,10 @@ export default function GaneshPujaEvents() {
                     src={event.thumbnail}
                     alt={event.title}
                     fill
+                    style={{ objectFit: "cover" }}
                     className="object-cover transition-transform duration-[1s] group-hover:scale-105"
                   />
-                  
+
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent opacity-40 group-hover:opacity-60 transition-opacity" />
 
                   {/* Smaller Play Button */}

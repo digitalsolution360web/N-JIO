@@ -44,25 +44,16 @@ export default function Navbar() {
             <span className="text-amber-500 font-black tracking-widest uppercase">Reg No: 1875</span>
           </div>
 
-          {/* Right Side: SLIDER WITH INCREASED WIDTH (Extends to Screen Edge) */}
-          <div className="absolute right-[-200vw] left-[750px] lg:left-[700px] h-6 flex items-center overflow-hidden">
-            <motion.div
-              className="whitespace-nowrap"
-              initial={{ x: "100%" }} // Start from the absolute right edge of the screen
-              animate={{ x: "-100%" }} // Move all the way to the left
-              transition={{
-                duration: 9, // Very fast
-                repeat: Infinity,
-                ease: "linear"
-              }}
-            >
+          {/* Right Side: MARQUEE SECTION */}
+          <div className="marquee-container z-10">
+            <div className="marquee-content">
               <div className="flex items-center gap-4">
                 <div className="w-2 h-2 bg-amber-500 rounded-full shadow-[0_0_10px_rgba(245,158,11,0.5)] animate-pulse" />
                 <span className="text-slate-100 font-[950] tracking-widest uppercase text-[11px] lg:text-[12px]">
                   {notice}
                 </span>
               </div>
-            </motion.div>
+            </div>
           </div>
 
         </div>

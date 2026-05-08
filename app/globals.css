@@ -106,3 +106,30 @@ body {
   transform: translateY(-10px);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
 }
+
+@keyframes marquee-new {
+  from { transform: translateX(100vw); }
+  to { transform: translateX(-100%); }
+}
+
+.marquee-container {
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  width: 100% !important;
+  position: absolute !important;
+  inset: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  pointer-events: none; /* Let clicks pass through unless hovering content */
+}
+
+.marquee-content {
+  display: inline-block !important;
+  white-space: nowrap !important;
+  animation: marquee-new 45s linear infinite !important;
+  pointer-events: auto; /* Catch hover here */
+}
+
+.marquee-container:hover .marquee-content {
+  animation-play-state: paused !important;
+}

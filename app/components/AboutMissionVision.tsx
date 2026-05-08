@@ -1,14 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Target, Heart, Eye, CheckCircle, ArrowRight, ShieldCheck } from "lucide-react";
 
 export default function AboutMissionVision() {
   return (
     <div className="space-y-0 font-sans">
       {/* About Us Section */}
-      <section id="about" className="py-20 bg-slate-50 overflow-hidden">
-        <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-24 flex flex-col lg:flex-row items-center gap-10 md:gap-16">
+      <section id="about" className="py-12 md:py-16 bg-slate-50 overflow-hidden">
+        <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-24 flex flex-col lg:flex-row items-center gap-8 md:gap-12">
           <div className="lg:w-1/2 relative">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
@@ -36,13 +37,13 @@ export default function AboutMissionVision() {
             </motion.div>
           </div>
 
-          <div className="lg:w-1/2 space-y-10">
+          <div className="lg:w-1/2 space-y-6 md:space-y-8">
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <div className="flex flex-col items-start mb-6">
+              <div className="flex flex-col items-start mb-4 md:mb-6">
                 <span className="text-amber-600 font-black uppercase tracking-[0.2em] text-[12px] mb-3 flex items-center gap-2">
                   <div className="w-8 h-[2px] bg-amber-500" /> Who We Are
                 </span>
@@ -61,7 +62,7 @@ export default function AboutMissionVision() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 pt-6 md:pt-8">
                 {["Selfless Service", "Transparency", "Inclusive Growth", "Community Spirit"].map((item) => (
                   <div key={item} className="flex items-center gap-4 bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
                     <div className="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-white">
@@ -115,15 +116,15 @@ export default function AboutMissionVision() {
       </section> */}
 
       {/* Why Choose Us */}
-      <section className="py-12 bg-white">
+      <section className="py-10 md:py-14 bg-white">
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-24 text-center">
-          <div className="flex flex-col items-center mb-10">
+          <div className="flex flex-col items-center mb-8 md:mb-10">
             <span className="text-amber-600 font-bold uppercase tracking-widest text-[12px] mb-3">Core Values</span>
             <h2 className="section-heading">Why <span className="text-amber-600">Choose Us</span></h2>
             <div className="heading-underline" />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {[
               { title: "Selfless Service", desc: "No hidden motives, only pure intentions to help." },
               { title: "Dedicated Team", desc: "Volunteers who treat service as their duty." },
@@ -133,7 +134,7 @@ export default function AboutMissionVision() {
               <motion.div
                 key={idx}
                 whileHover={{ y: -10 }}
-                className="p-8 rounded-[2rem] bg-slate-50 hover:bg-white transition-all border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-slate-200/50 group"
+                className="p-6 md:p-8 rounded-[2rem] bg-slate-50 hover:bg-white transition-all border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-slate-200/50 group"
               >
                 <div className="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center text-amber-500 mb-5 mx-auto group-hover:bg-amber-500 group-hover:text-white transition-colors">
                   <Heart size={28} />
@@ -147,8 +148,8 @@ export default function AboutMissionVision() {
       </section>
 
       {/* CTA Section - DARK PROFESSIONAL THEME FOR EYE COMFORT */}
-      <section className="pb-14 px-6 md:px-12">
-        <div className="max-w-[1600px] mx-auto bg-[#0f172a] rounded-[2.5rem] p-6 md:p-10 text-white text-center shadow-2xl relative overflow-hidden border border-white/5">
+      <section className="pb-10 md:pb-14 px-4 md:px-12">
+        <div className="max-w-[1600px] mx-auto bg-[#0f172a] rounded-[2.5rem] p-5 md:p-10 text-white text-center shadow-2xl relative overflow-hidden border border-white/5">
           {/* Subtle Accents */}
           <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-amber-500/10 rounded-full -mr-48 -mt-48 blur-[100px] pointer-events-none" />
 
@@ -165,16 +166,20 @@ export default function AboutMissionVision() {
               Your small contribution can make a big difference in someone's life. Join us today and help us create a better future for all.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center pt-6">
-              <button className="bg-amber-500 text-white px-12 py-5 rounded-2xl font-[900] text-xl hover:bg-amber-600 transition-all flex items-center justify-center gap-4 shadow-xl shadow-amber-500/20">
-                Donate Now <ArrowRight size={22} />
-              </button>
-              <button className="bg-white/5 border border-white/10 text-white px-12 py-5 rounded-2xl font-[900] text-xl hover:bg-white/10 transition-all flex items-center justify-center gap-4">
-                Become a Volunteer
-              </button>
+              <Link href="/donate">
+                <button className="bg-amber-500 cursor-pointer text-white px-12 py-5 rounded-2xl font-[900] text-xl hover:bg-amber-600 transition-all flex items-center justify-center gap-4 shadow-xl shadow-amber-500/20">
+                  Donate Now <ArrowRight size={22} />
+                </button>
+              </Link>
+              <Link href="/contact">
+                <button className="bg-white/5 cursor-pointer border border-white/10 text-white px-12 py-5 rounded-2xl font-[900] text-xl hover:bg-white/10 transition-all flex items-center justify-center gap-4">
+                  Become a Volunteer
+                </button>
+              </Link>
             </div>
           </motion.div>
         </div>
-      </section>
-    </div>
+      </section >
+    </div >
   );
 }
