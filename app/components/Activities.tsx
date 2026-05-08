@@ -92,6 +92,7 @@ export default function Activities() {
                     src={act.img}
                     alt={act.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     style={{ objectFit: "cover", objectPosition: "center" }}
                     className="transition-all duration-[1.5s] ease-out group-hover:scale-110"
                   />

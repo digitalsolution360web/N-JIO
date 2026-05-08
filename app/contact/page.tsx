@@ -3,107 +3,136 @@
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Send, MessageSquare, Clock, ArrowRight } from "lucide-react";
 
+// Social Icons
+const Facebook = ({ size = 24 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
+);
+const Instagram = ({ size = 24 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
+);
+const Youtube = ({ size = 24 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17z" /><path d="m10 15 5-3-5-3z" /></svg>
+);
+const WhatsApp = ({ size = 24 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="-1 -1 26 26" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.394 0 12.03c0 2.12.54 4.19 1.563 6.02L0 24l6.125-1.605a11.783 11.783 0 005.922 1.586h.005c6.632 0 12.028-5.396 12.033-12.033a11.78 11.78 0 00-3.489-8.486" /></svg>
+);
+
 export default function ContactPage() {
   return (
-    <div className="pt-[140px] pb-12 bg-white min-h-screen">
-      <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-24">
-        
-        {/* Header */}
-        <div className="flex flex-col items-center text-center mb-12">
-          <span className="flex items-center gap-2 text-amber-600 font-bold uppercase tracking-widest text-[12px] mb-3">
-             <MessageSquare size={16} /> Get In Touch
+    <div className="pt-[110px] md:pt-[140px] pb-8 md:pb-12 bg-white min-h-screen">
+      <div className="max-w-[1600px] mx-auto px-4 md:px-12 lg:px-24">
+
+        {/* Header - Compact */}
+        <div className="flex flex-col items-center text-center mb-8 md:mb-12">
+          <span className="flex items-center gap-2 text-amber-600 font-bold uppercase tracking-widest text-[11px] mb-2 md:mb-3">
+            <MessageSquare size={16} /> Get In Touch
           </span>
-          <h1 className="section-heading text-center">
-             Contact <span className="text-amber-500 italic">Us</span>
+          <h1 className="text-2xl md:text-5xl font-[1000] text-slate-900 tracking-tight text-center">
+            Contact <span className="text-amber-500 italic">Us</span>
           </h1>
-          <div className="heading-underline" />
-          <p className="mt-8 text-slate-500 text-xl max-w-2xl font-medium opacity-80">
+          <div className="h-1.5 w-16 md:w-24 bg-amber-500 rounded-full mt-3 md:mt-4" />
+          <p className="mt-5 md:mt-8 text-slate-500 text-base md:text-xl max-w-2xl font-medium opacity-80 px-4">
             Have questions or want to join our mission? Reach out to us, and we'll be happy to connect.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24">
-          
-          {/* Contact Details Card */}
-          <div className="lg:col-span-4 space-y-8">
-            <div className="bg-slate-900 text-white p-8 rounded-[3rem] shadow-2xl relative overflow-hidden group">
-               <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500 opacity-10 rounded-full -mr-16 -mt-16 blur-2xl" />
-               <h3 className="text-2xl font-black mb-6">Contact Information</h3>
-               
-               <ul className="space-y-10">
-                 {[
-                   { icon: Phone, label: "Call Us", val: "7982034823", sub: "Mon-Sat 9am to 6pm" },
-                   { icon: Mail, label: "Email Us", val: "info@annapurnamahabahu.com", sub: "We'll reply within 24h" },
-                   { icon: MapPin, label: "Visit Us", val: "750 Chirag Delhi, Delhi", sub: "New Delhi, 110017" },
-                 ].map((item, i) => (
-                   <li key={i} className="flex gap-6 group">
-                     <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-amber-500 transition-colors group-hover:bg-amber-500 group-hover:text-white">
-                        <item.icon size={24} />
-                     </div>
-                     <div>
-                       <p className="text-xs font-bold text-amber-500 uppercase tracking-widest mb-1">{item.label}</p>
-                       <p className="text-lg font-black">{item.val}</p>
-                       <p className="text-slate-400 text-xs font-medium mt-1">{item.sub}</p>
-                     </div>
-                   </li>
-                 ))}
-               </ul>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-24">
 
-               <div className="mt-16 pt-10 border-t border-white/10">
-                  <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Follow Our Journey</p>
-                  <div className="flex gap-4">
-                     {[1,2,3,4].map(i => <div key={i} className="w-10 h-10 bg-white/5 rounded-full border border-white/10" />)}
-                  </div>
-               </div>
+          {/* Contact Details Card - Tighter on Mobile */}
+          <div className="lg:col-span-4 space-y-5 md:space-y-8">
+            <div className="bg-[#0f172a] text-white p-6 md:p-8 rounded-[1rem] md:rounded-[2rem] shadow-2xl relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl" />
+              <h3 className="text-xl md:text-2xl font-black mb-6 md:mb-8">Contact Information</h3>
+
+              <ul className="space-y-6 md:space-y-10">
+                {[
+                  { icon: Phone, label: "Call Us", val: "7982034823", sub: "Mon-Sat 9am to 6pm" },
+                  { icon: Mail, label: "Email Us", val: "info@annapurnamahabahu.com", sub: "We'll reply within 24h" },
+                  { icon: MapPin, label: "Visit Us", val: "750 Chirag Delhi, Delhi", sub: "New Delhi, 110017" },
+                ].map((item, i) => (
+                  <li key={i} className="flex gap-4 md:gap-6 group">
+                    <div className="w-12 h-12 md:w-14 md:h-14 bg-white/5 rounded-xl flex items-center justify-center text-amber-500 transition-colors group-hover:bg-amber-500 group-hover:text-white border border-white/10">
+                      <item.icon size={20} className="md:w-6 md:h-6" />
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-black text-amber-500 uppercase tracking-widest mb-1">{item.label}</p>
+                      <p className="text-base md:text-lg font-black tracking-tight">{item.val}</p>
+                      <p className="text-slate-400 text-[11px] font-medium mt-1">{item.sub}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-10 md:mt-16 pt-8 md:pt-10 border-t border-white/10">
+                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Follow Our Journey</p>
+                <div className="flex gap-3 md:gap-4">
+                  {[
+                    { icon: Facebook, href: "https://www.facebook.com/annapurnamahabahu" },
+                    { icon: Instagram, href: "https://www.instagram.com/annapurnamahabahu/" },
+                    { icon: Youtube, href: "https://www.youtube.com/@annapurnamahabahu" },
+                    { icon: WhatsApp, href: "https://api.whatsapp.com/send?phone=917982034823&text=Hi" },
+                  ].map((social, i) => (
+                    <a
+                      key={i}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 bg-white/5 rounded-full border border-white/10 flex items-center justify-center text-amber-500 hover:bg-amber-500 hover:text-white transition-all cursor-pointer"
+                    >
+                      <social.icon size={18} />
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
 
-            {/* Availability */}
-            <div className="bg-amber-50 p-10 rounded-[2.5rem] border border-amber-100 flex items-center gap-6">
-               <div className="w-14 h-14 bg-amber-500 text-white rounded-2xl flex items-center justify-center shadow-lg">
-                  <Clock size={28} />
-               </div>
-               <div>
-                 <p className="font-black text-slate-900 text-lg leading-none">Operational Hours</p>
-                 <p className="text-slate-500 text-sm font-bold mt-2 uppercase tracking-wide">Available 24/7 for Emergency</p>
-               </div>
+            {/* Availability - Compact */}
+            <div className="bg-amber-50 p-6 md:p-10 rounded-[1rem] md:rounded-[1rem] border border-amber-100 flex items-center gap-4 md:gap-6">
+              <div className="w-12 h-12 md:w-14 md:h-14 bg-amber-500 text-white rounded-xl flex items-center justify-center shadow-lg shrink-0">
+                <Clock size={24} className="md:w-7 md:h-7" />
+              </div>
+              <div>
+                <p className="font-black text-slate-900 text-base md:text-lg leading-tight">Operational Hours</p>
+                <p className="text-slate-500 text-[10px] md:text-xs font-bold mt-1.5 uppercase tracking-wide">Available 24/7 for Emergency</p>
+              </div>
             </div>
           </div>
 
-          {/* Contact Form */}
+          {/* Contact Form - More Professional Padding */}
           <div className="lg:col-span-8">
-            <div className="bg-white p-2 md:p-4 rounded-[4rem] border-2 border-slate-50 shadow-sm relative">
-              <div className="bg-slate-50 px-8 py-10 md:p-14 rounded-[3rem]">
-                <h3 className="text-3xl font-[900] text-slate-900 mb-10">Send us a <span className="text-amber-500 italic">Message</span></h3>
-                
-                <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                     <div className="space-y-3">
-                        <label className="text-xs font-black uppercase text-slate-400 tracking-widest ml-4">Full Name</label>
-                        <input type="text" placeholder="Your Name" className="w-full h-16 px-8 rounded-2xl border-none bg-white shadow-sm font-bold text-slate-900 placeholder:text-slate-300 focus:ring-2 focus:ring-amber-500 transition-all" />
-                     </div>
-                     <div className="space-y-3">
-                        <label className="text-xs font-black uppercase text-slate-400 tracking-widest ml-4">Email Address</label>
-                        <input type="email" placeholder="email@example.com" className="w-full h-16 px-8 rounded-2xl border-none bg-white shadow-sm font-bold text-slate-900 placeholder:text-slate-300 focus:ring-2 focus:ring-amber-500 transition-all" />
-                     </div>
-                  </div>
-                  
-                  <div className="space-y-3">
-                     <label className="text-xs font-black uppercase text-slate-400 tracking-widest ml-4">How can we help?</label>
-                     <select className="w-full h-16 px-8 rounded-2xl border-none bg-white shadow-sm font-bold text-slate-900 focus:ring-2 focus:ring-amber-500 transition-all appearance-none cursor-pointer">
-                        <option>General Inquiry</option>
-                        <option>Donation Information</option>
-                        <option>Volunteer Opportunity</option>
-                        <option>Report a Need</option>
-                     </select>
+            <div className="bg-white p-1 md:p-4 rounded-[1rem] md:rounded-[2rem] border border-slate-100 shadow-sm relative">
+              <div className="bg-slate-50 p-6 md:p-14 rounded-[1rem] md:rounded-[2rem]">
+                <h3 className="text-2xl md:text-3xl font-[1000] text-slate-900 mb-6 md:mb-10 tracking-tight">Send us a <span className="text-amber-500 italic">Message</span></h3>
+
+                <form className="space-y-4 md:space-y-8" onSubmit={(e) => e.preventDefault()}>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+                    <div className="space-y-1.5">
+                      <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest ml-1">Full Name</label>
+                      <input type="text" placeholder="Your Name" className="w-full h-14 md:h-16 px-6 rounded-[1rem] md:rounded-[2rem] border-none bg-white shadow-sm font-bold text-slate-900 placeholder:text-slate-300 focus:ring-2 focus:ring-amber-500 transition-all text-sm md:text-base" />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest ml-1">Email Address</label>
+                      <input type="email" placeholder="email@example.com" className="w-full h-14 md:h-16 px-6 rounded-xl md:rounded-2xl border-none bg-white shadow-sm font-bold text-slate-900 placeholder:text-slate-300 focus:ring-2 focus:ring-amber-500 transition-all text-sm md:text-base" />
+                    </div>
                   </div>
 
-                  <div className="space-y-3">
-                     <label className="text-xs font-black uppercase text-slate-400 tracking-widest ml-4">Your Message</label>
-                     <textarea placeholder="Write your message here..." rows={6} className="w-full p-8 rounded-[2rem] border-none bg-white shadow-sm font-bold text-slate-900 placeholder:text-slate-300 focus:ring-2 focus:ring-amber-500 transition-all" />
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest ml-1">How can we help?</label>
+                    <select className="w-full h-14 md:h-16 px-6 rounded-xl md:rounded-2xl border-none bg-white shadow-sm font-bold text-slate-900 focus:ring-2 focus:ring-amber-500 transition-all appearance-none cursor-pointer text-sm md:text-base">
+                      <option>General Inquiry</option>
+                      <option>Donation Information</option>
+                      <option>Volunteer Opportunity</option>
+                      <option>Report a Need</option>
+                    </select>
                   </div>
 
-                  <button className="w-full bg-slate-900 text-white py-6 rounded-2xl font-[900] text-xl hover:bg-slate-800 flex items-center justify-center gap-4 shadow-2xl transition-all hover:scale-[1.02] active:scale-[0.98]">
-                    Send Message <Send size={20} />
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest ml-1">Your Message</label>
+                    <textarea placeholder="Write your message here..." rows={4} className="w-full p-6 rounded-[1.5rem] md:rounded-[2rem] border-none bg-white shadow-sm font-bold text-slate-900 placeholder:text-slate-300 focus:ring-2 focus:ring-amber-500 transition-all text-sm md:text-base" />
+                  </div>
+
+                  <button className="w-full bg-slate-900 text-white py-4 md:py-6 rounded-xl md:rounded-2xl font-[900] text-base md:text-xl hover:bg-slate-800 flex items-center justify-center gap-3 shadow-2xl transition-all active:scale-[0.98]">
+                    Send Message <Send size={18} />
                   </button>
                 </form>
               </div>
@@ -112,19 +141,14 @@ export default function ContactPage() {
 
         </div>
 
-        {/* Map Placeholder */}
-        <div className="mt-12 h-[400px] bg-slate-100 rounded-[3rem] overflow-hidden relative border-8 border-white shadow-2xl group">
-             <div className="absolute inset-0 bg-slate-900 opacity-0 group-hover:opacity-10 transition-opacity flex items-center justify-center cursor-pointer">
-                 <div className="bg-white p-6 rounded-full shadow-2xl scale-0 group-hover:scale-100 transition-transform">
-                    <MapPin size={32} className="text-amber-500" />
-                 </div>
-             </div>
-             <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14013.910815467364!2d77.2166!3d28.5273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce240f930e395%3A0x6d9536d52541a7d3!2sChirag%20Delhi%2C%20New%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1713212345678!5m2!1sen!2sin" 
-                className="w-full h-full border-0 grayscale hover:grayscale-0 transition-all duration-1000" 
-                allowFullScreen={true} 
-                loading="lazy"
-              />
+        {/* Map Section - Removed Overlays & Professional Padding */}
+        <div className="mt-8 md:mt-16 h-[300px] md:h-[450px] bg-slate-50 rounded-[1rem] md:rounded-[1rem] overflow-hidden relative border border-slate-200">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14013.910815467364!2d77.2166!3d28.5273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce240f930e395%3A0x6d9536d52541a7d3!2sChirag%20Delhi%2C%20New%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1713212345678!5m2!1sen!2sin"
+            className="w-full h-full border-0"
+            allowFullScreen={true}
+            loading="lazy"
+          />
         </div>
 
       </div>

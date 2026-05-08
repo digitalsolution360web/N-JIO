@@ -44,6 +44,7 @@ export default function HeroSlider() {
             src={slides[current].url}
             alt={`Slide ${current + 1}`}
             fill
+            sizes="100vw"
             className="object-cover"
             priority
           />

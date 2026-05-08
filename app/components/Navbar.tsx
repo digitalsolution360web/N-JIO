@@ -61,8 +61,8 @@ export default function Navbar() {
 
       <nav
         className={`fixed left-0 right-0 z-50 transition-all duration-500 ease-in-out ${isScrolled
-          ? "top-4 mx-4 md:mx-12 rounded-[2.5rem] glass-nav py-3 shadow-2xl shadow-slate-900/5 border border-white/50"
-          : "top-[40px] md:top-[36px] bg-white md:bg-transparent py-5"
+          ? "top-0 md:top-4 mx-0 md:mx-12 rounded-none md:rounded-[2.5rem] bg-white md:glass-nav py-2 md:py-3 shadow-xl md:shadow-2xl md:shadow-slate-900/5 border-b md:border border-slate-100 md:border-white/50"
+          : "top-0 md:top-[36px] bg-white md:bg-transparent py-3 md:py-5"
           }`}
       >
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 flex items-center justify-between">
@@ -72,6 +72,7 @@ export default function Navbar() {
                 src="/logo.jpg"
                 alt="NGO Logo"
                 fill
+                sizes="(max-width: 768px) 44px, 56px"
                 className="object-cover"
               />
             </div>
@@ -117,29 +118,28 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: -20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: -20 }}
-              className="absolute top-[calc(100%+12px)] left-4 right-4 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] p-8 flex flex-col gap-6 lg:hidden border border-slate-100 rounded-[2.5rem]"
+              className="absolute top-[calc(100%+8px)] left-4 right-4 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] p-6 md:p-8 flex flex-col gap-4 lg:hidden border border-slate-100 rounded-[2rem] md:rounded-[2.5rem]"
             >
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-xl font-bold text-slate-900 flex items-center justify-between group"
+                  className="text-[17px] font-bold text-slate-900 flex items-center justify-between group py-1"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.name}
-                  <div className="w-8 h-[2px] bg-slate-100 group-hover:w-12 group-hover:bg-amber-500 transition-all" />
+                  <div className="w-6 h-[2px] bg-slate-100 group-hover:w-10 group-hover:bg-amber-500 transition-all" />
                 </Link>
               ))}
               <Link
                 href="/donate"
-                className="bg-amber-500 text-white py-5 rounded-[1.5rem] text-center font-black text-xl shadow-xl shadow-amber-500/20"
+                className="bg-amber-500 text-white py-4 rounded-[1.2rem] text-center font-black text-lg shadow-lg shadow-amber-500/20 mt-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Donate Now

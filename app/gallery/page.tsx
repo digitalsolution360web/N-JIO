@@ -83,6 +83,7 @@ export default function GalleryPage() {
                     src={img.src}
                     alt={img.title}
                     fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                     className="object-cover transition-transform duration-1000 group-hover:scale-110"
                   />
                   
@@ -130,6 +131,7 @@ export default function GalleryPage() {
                 src={selectedImg}
                 alt="Selected"
                 fill
+                sizes="100vw"
                 className="object-contain"
               />
             </motion.div>

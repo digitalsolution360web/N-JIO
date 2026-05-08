@@ -3,6 +3,7 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import MobileStickyContact from "./components/MobileStickyContact";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -27,10 +28,11 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-white font-sans">
         <Navbar />
-        <main className="flex-grow pt-0">
+        <main className="flex-grow pt-0 pb-16 md:pb-0">
           {children}
         </main>
         <Footer />
+        <MobileStickyContact />
       </body>
     </html>
   );

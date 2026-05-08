@@ -25,14 +25,14 @@ const WhatsApp = ({ size = 24 }: { size?: number }) => (
 
 export default function Footer() {
   return (
-    <footer id="contact" className="bg-[#111827] text-gray-300 pt-12 md:pt-16 pb-8 px-6 md:px-12 lg:px-24 border-t border-gray-800">
+    <footer id="contact" className="bg-[#111827] text-gray-300 pt-12 md:pt-16 pb-24 md:pb-8 px-6 md:px-12 lg:px-24 border-t border-gray-800">
       <div className="max-w-[1600px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-12">
           {/* Brand Column */}
           <div className="space-y-6">
             <Link href="/" className="flex items-center gap-3">
               <div className="relative w-10 h-10 rounded-full overflow-hidden border border-amber-500/30">
-                <Image src="/logo.jpg" alt="Logo" fill className="object-cover" />
+                <Image src="/logo.jpg" alt="Logo" fill sizes="40px" className="object-cover" />
               </div>
               <span className="text-xl font-bold text-white tracking-tight">
                 Annapurna <span className="text-amber-500">Mahabahu</span>
@@ -130,11 +130,11 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-6 md:pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6">
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-gray-500 text-center md:text-left">
             © 2025 <span className="text-white">Annapurna Mahabahu Sewa Sangh</span>. All Rights Reserved.
           </p>
-          <p className="text-xs text-gray-500">
-            Designed & Developed by <a href="#" className="text-amber-500 hover:underline">Digital Solution 360</a>
+          <p className="text-xs text-gray-500 text-center md:text-right">
+            Designed & Developed by <a href="https://www.digitalsolution360.in/" target="_blank" rel="noopener noreferrer" className="text-amber-500 hover:underline">Digital Solution 360</a>
           </p>
         </div>
       </div>

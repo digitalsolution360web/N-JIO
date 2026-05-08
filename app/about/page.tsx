@@ -46,7 +46,7 @@ export default function AboutPage() {
               className="lg:w-1/2 relative"
             >
               <div className="relative h-[400px] md:h-[600px] rounded-[3rem] overflow-hidden shadow-2xl border-[12px] border-white ring-1 ring-slate-100">
-                <Image src="/ab1.jpg" alt="Our Work" fill className="object-cover" />
+                <Image src="/ab1.jpg" alt="Our Work" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
               </div>
               {/* Achievement Badge */}
               <div className="absolute -bottom-8 -right-8 bg-amber-500 text-white p-8 rounded-[2rem] shadow-2xl flex items-center gap-4">
@@ -225,26 +225,48 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Blue Contact Bar - NO GAP VERSION */}
-      <section className="relative bg-gradient-to-r from-blue-700 via-blue-600 to-blue-800 py-10 md:py-14 overflow-hidden border-t border-white/10">
-        {/* Subtle Decorative Elements */}
+      {/* Compact Contact Bar - PREMIUM SLATE THEME */}
+      <section className="relative bg-slate-900 py-10 md:py-14 overflow-hidden border-t border-amber-500/20">
+        {/* Decorative Background Elements */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[100px] -mr-80 -mt-80" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-orange-600/10 rounded-full blur-[100px] -ml-80 -mb-80" />
 
-        <div className=" max-w-[1600px] mx-auto px-6 text-center">
-          <h2 className="text-white text-3xl md:text-5xl font-[1000] tracking-tighter mb-6">Ready to Grow Your Impact?</h2>
-          <p className="text-blue-50 text-xl md:text-2xl font-medium mb-12 max-w-3xl mx-auto opacity-80 leading-relaxed">
-            Let's discuss how we can help you achieve your philanthropic goals and bring real change.
-          </p>
+        <div className="max-w-[1600px] mx-auto px-6 text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="space-y-4 md:space-y-5"
+          >
+            <h2 className="text-white text-2xl md:text-5xl font-[1000] tracking-tight leading-tight">
+              Ready to Make a <span className="text-amber-500 italic underline decoration-amber-500/30 underline-offset-8">Real Impact?</span>
+            </h2>
+            <p className="text-slate-300 text-[15px] md:text-xl font-medium max-w-3xl mx-auto leading-relaxed opacity-80">
+              Join Annapurna Mahabahu Sewa Sangh in our mission to uplift the underprivileged. Your support helps us bring hope and dignity to those in need.
+            </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <button className="flex items-center gap-3 bg-white text-blue-700 px-12 py-5 rounded-2xl font-black text-xl hover:bg-blue-50 transition-all shadow-2xl hover:-translate-y-1 active:scale-95">
-              <Phone size={24} className="fill-blue-700/10" />
-              Call Us Now
-            </button>
-            <button className="flex items-center gap-3 bg-transparent border-2 border-white/40 text-white px-12 py-5 rounded-2xl font-black text-xl hover:bg-white/10 transition-all hover:border-white/60">
-              {/* <Image src="/whatsapp.png" alt="WhatsApp" width={24} height={24} className="invert opacity-90" /> */}
-              WhatsApp Us
-            </button>
-          </div>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 md:pt-6">
+
+              <Link
+                href="/contact"
+                className="flex items-center gap-3 bg-amber-500 text-white px-10 py-4 rounded-2xl font-black text-lg hover:bg-amber-600 transition-all shadow-xl shadow-amber-500/20 hover:-translate-y-1 active:scale-95 w-full sm:w-auto justify-center"
+              >
+                <Phone size={20} className="fill-current" />
+                Call Us Now
+              </Link>
+              <a
+                href="https://api.whatsapp.com/send?phone=917982034823&text=Hi, I want to support Annapurna Mahabahu Sewa Sangh."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 bg-white/5 border-2 border-white/20 text-white px-10 py-4 rounded-2xl font-black text-lg hover:bg-white/10 hover:border-white/40 transition-all w-full sm:w-auto justify-center"
+              >
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" className="text-green-500">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.394 0 12.03c0 2.12.54 4.19 1.563 6.02L0 24l6.125-1.605a11.783 11.783 0 005.922 1.586h.005c6.632 0 12.028-5.396 12.033-12.033a11.78 11.78 0 00-3.489-8.486" />
+                </svg>
+                WhatsApp Us
+              </a>
+            </div>
+          </motion.div>
         </div>
       </section>
     </div>

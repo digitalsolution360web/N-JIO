@@ -69,11 +69,12 @@ export default function DonatePage() {
                 <span className="text-amber-500 uppercase text-base md:text-lg tracking-[0.2em] font-black">Sewa Sangh</span>
               </h3>
 
-              <div className="relative w-[240px] md:w-[320px] aspect-square rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden bg-white shadow-inner mb-4 md:mb-6 border border-slate-50 mx-auto">
+              <div className="relative w-[280px] md:w-[420px] aspect-square rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden bg-white shadow-inner mb-4 md:mb-6 border border-slate-50 mx-auto">
                 <Image
                   src="/donate1.webp"
                   alt="Scan to Donate"
                   fill
+                  sizes="(max-width: 768px) 280px, 420px"
                   className="object-cover"
                 />
               </div>

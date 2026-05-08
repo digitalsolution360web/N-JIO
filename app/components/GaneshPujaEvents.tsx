@@ -148,6 +148,7 @@ export default function GaneshPujaEvents() {
                     src={event.thumbnail}
                     alt={event.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     style={{ objectFit: "cover" }}
                     className="object-cover transition-transform duration-[1s] group-hover:scale-105"
                   />
