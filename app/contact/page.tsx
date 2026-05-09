@@ -1,7 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Send, MessageSquare, Clock, ArrowRight } from "lucide-react";
+import { Phone, Mail, MapPin, Send, MessageSquare, Clock, ArrowRight, Loader2, CheckCircle2 } from "lucide-react";
+import { useState } from "react";
+import SuccessToast from "../components/SuccessToast";
 
 // Social Icons
 const Facebook = ({ size = 24 }: { size?: number }) => (
@@ -18,8 +20,60 @@ const WhatsApp = ({ size = 24 }: { size?: number }) => (
 );
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    inquiryType: "General Inquiry",
+    message: "",
+  });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [showToast, setShowToast] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000); 
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+        signal: controller.signal,
+      });
+
+      clearTimeout(timeoutId);
+
+      if (response.ok) {
+        setStatus("success");
+        setFormData({ name: "", email: "", inquiryType: "General Inquiry", message: "" });
+        setShowToast(true);
+        setTimeout(() => setStatus("idle"), 5000);
+      } else {
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 5000);
+      }
+    } catch (error: any) {
+      clearTimeout(timeoutId);
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 5000);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   return (
     <div className="pt-[110px] md:pt-[140px] pb-8 md:pb-12 bg-white min-h-screen">
+      <SuccessToast 
+        show={showToast} 
+        onClose={() => setShowToast(false)} 
+        message="Thank you! Your message has been sent successfully."
+      />
+
       <div className="max-w-[1600px] mx-auto px-4 md:px-12 lg:px-24">
 
         {/* Header - Compact */}
@@ -104,21 +158,42 @@ export default function ContactPage() {
               <div className="bg-slate-50 p-6 md:p-14 rounded-[1rem] md:rounded-[2rem]">
                 <h3 className="text-2xl md:text-3xl font-[1000] text-slate-900 mb-6 md:mb-10 tracking-tight">Send us a <span className="text-amber-500 italic">Message</span></h3>
 
-                <form className="space-y-4 md:space-y-8" onSubmit={(e) => e.preventDefault()}>
+                <form className="space-y-4 md:space-y-8" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
                     <div className="space-y-1.5">
                       <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest ml-1">Full Name</label>
-                      <input type="text" placeholder="Your Name" className="w-full h-14 md:h-16 px-6 rounded-[1rem] md:rounded-[2rem] border-none bg-white shadow-sm font-bold text-slate-900 placeholder:text-slate-300 focus:ring-2 focus:ring-amber-500 transition-all text-sm md:text-base" />
+                      <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        placeholder="Your Name"
+                        className="w-full h-14 md:h-16 px-6 rounded-[1rem] md:rounded-[2rem] border-none bg-white shadow-sm font-bold text-slate-900 placeholder:text-slate-300 focus:ring-2 focus:ring-amber-500 transition-all text-sm md:text-base"
+                      />
                     </div>
                     <div className="space-y-1.5">
                       <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest ml-1">Email Address</label>
-                      <input type="email" placeholder="email@example.com" className="w-full h-14 md:h-16 px-6 rounded-xl md:rounded-2xl border-none bg-white shadow-sm font-bold text-slate-900 placeholder:text-slate-300 focus:ring-2 focus:ring-amber-500 transition-all text-sm md:text-base" />
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        placeholder="email@example.com"
+                        className="w-full h-14 md:h-16 px-6 rounded-xl md:rounded-2xl border-none bg-white shadow-sm font-bold text-slate-900 placeholder:text-slate-300 focus:ring-2 focus:ring-amber-500 transition-all text-sm md:text-base"
+                      />
                     </div>
                   </div>
 
                   <div className="space-y-1.5">
                     <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest ml-1">How can we help?</label>
-                    <select className="w-full h-14 md:h-16 px-6 rounded-xl md:rounded-2xl border-none bg-white shadow-sm font-bold text-slate-900 focus:ring-2 focus:ring-amber-500 transition-all appearance-none cursor-pointer text-sm md:text-base">
+                    <select
+                      name="inquiryType"
+                      value={formData.inquiryType}
+                      onChange={handleChange}
+                      className="w-full h-14 md:h-16 px-6 rounded-xl md:rounded-2xl border-none bg-white shadow-sm font-bold text-slate-900 focus:ring-2 focus:ring-amber-500 transition-all appearance-none cursor-pointer text-sm md:text-base"
+                    >
                       <option>General Inquiry</option>
                       <option>Donation Information</option>
                       <option>Volunteer Opportunity</option>
@@ -128,12 +203,33 @@ export default function ContactPage() {
 
                   <div className="space-y-1.5">
                     <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest ml-1">Your Message</label>
-                    <textarea placeholder="Write your message here..." rows={4} className="w-full p-6 rounded-[1.5rem] md:rounded-[2rem] border-none bg-white shadow-sm font-bold text-slate-900 placeholder:text-slate-300 focus:ring-2 focus:ring-amber-500 transition-all text-sm md:text-base" />
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      placeholder="Write your message here..."
+                      rows={4}
+                      className="w-full p-6 rounded-[1.5rem] md:rounded-[2rem] border-none bg-white shadow-sm font-bold text-slate-900 placeholder:text-slate-300 focus:ring-2 focus:ring-amber-500 transition-all text-sm md:text-base"
+                    />
                   </div>
 
-                  <button className="w-full bg-slate-900 text-white py-4 md:py-6 rounded-xl md:rounded-2xl font-[900] text-base md:text-xl hover:bg-slate-800 flex items-center justify-center gap-3 shadow-2xl transition-all active:scale-[0.98]">
-                    Send Message <Send size={18} />
+                  <button
+                    disabled={status === "loading" || status === "success"}
+                    className={`w-full ${status === "success" ? "bg-green-600" : "bg-slate-900"} text-white py-4 cursor-pointer md:py-6 rounded-xl md:rounded-2xl font-[900] text-base md:text-xl hover:bg-slate-800 flex items-center justify-center gap-3 shadow-2xl transition-all active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed`}
+                  >
+                    {status === "loading" ? (
+                      <>Sending... <Loader2 className="animate-spin" size={18} /></>
+                    ) : status === "success" ? (
+                      <>Message Sent! <CheckCircle2 size={18} /></>
+                    ) : (
+                      <>Send Message <Send size={18} /></>
+                    )}
                   </button>
+
+                  {status === "error" && (
+                    <p className="text-red-500 text-center font-bold mt-2">Failed to send message. Please try again.</p>
+                  )}
                 </form>
               </div>
             </div>

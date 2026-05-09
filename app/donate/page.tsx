@@ -6,12 +6,60 @@ import { motion } from "framer-motion";
 import {
   Heart, ShieldCheck, CreditCard, Banknote,
   QrCode, ArrowRight, CheckCircle2, Info,
-  Smartphone, Building2, User, Copy, Check, Send, Mail, Phone, MessageSquare
+  Smartphone, Building2, User, Copy, Check, Send, Mail, Phone, MessageSquare, Loader2
 } from "lucide-react";
+import SuccessToast from "../components/SuccessToast";
 
 export default function DonatePage() {
   const [copied, setCopied] = useState(false);
   const upiId = "paytmqr6hos0g@ptys";
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    inquiryType: "Donation Information",
+    message: "",
+  });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [showToast, setShowToast] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+        signal: controller.signal,
+      });
+
+      clearTimeout(timeoutId);
+
+      if (response.ok) {
+        setStatus("success");
+        setFormData({ name: "", email: "", inquiryType: "Donation Information", message: "" });
+        setShowToast(true);
+        setTimeout(() => setStatus("idle"), 5000);
+      } else {
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 5000);
+      }
+    } catch (error: any) {
+      clearTimeout(timeoutId);
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 5000);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  // ... rest of the component
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(upiId);
@@ -29,6 +77,11 @@ export default function DonatePage() {
 
   return (
     <div className="pt-[100px] md:pt-[120px] pb-8 bg-white min-h-screen">
+      <SuccessToast
+        show={showToast}
+        onClose={() => setShowToast(false)}
+        message="Thank you! Your donation enquiry has been received."
+      />
       <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
 
         {/* Header Section */}
@@ -191,25 +244,64 @@ export default function DonatePage() {
 
               {/* Right Side: Form */}
               <div className="bg-white p-5 md:p-8 rounded-[2rem] md:rounded-[3rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] border border-slate-100">
-                <form className="space-y-3 md:space-y-4">
+                <form className="space-y-3 md:space-y-4" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 gap-3 md:gap-4">
                     <div className="space-y-1.5">
                       <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-1">Full Name</label>
-                      <input type="text" placeholder="Your name here" className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-5 md:px-6 py-3.5 md:py-4 outline-none focus:border-amber-500 focus:ring-8 focus:ring-amber-500/5 transition-all font-bold text-slate-900 text-sm md:text-base placeholder:opacity-40" />
+                      <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        placeholder="Your name here"
+                        className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-5 md:px-6 py-3.5 md:py-4 outline-none focus:border-amber-500 focus:ring-8 focus:ring-amber-500/5 transition-all font-bold text-slate-900 text-sm md:text-base placeholder:opacity-40"
+                      />
                     </div>
                     <div className="space-y-1.5">
                       <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-1">Email Address</label>
-                      <input type="email" placeholder="example@mail.com" className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-5 md:px-6 py-3.5 md:py-4 outline-none focus:border-amber-500 focus:ring-8 focus:ring-amber-500/5 transition-all font-bold text-slate-900 text-sm md:text-base placeholder:opacity-40" />
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        placeholder="example@mail.com"
+                        className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-5 md:px-6 py-3.5 md:py-4 outline-none focus:border-amber-500 focus:ring-8 focus:ring-amber-500/5 transition-all font-bold text-slate-900 text-sm md:text-base placeholder:opacity-40"
+                      />
                     </div>
                     <div className="space-y-1.5">
                       <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-1">Your Message</label>
-                      <textarea rows={3} placeholder="Type your message..." className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-5 md:px-6 py-3.5 md:py-4 outline-none focus:border-amber-500 focus:ring-8 focus:ring-amber-500/5 transition-all font-bold text-slate-900 text-sm md:text-base placeholder:opacity-40 resize-none"></textarea>
+                      <textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                        rows={3}
+                        placeholder="Type your message..."
+                        className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-5 md:px-6 py-3.5 md:py-4 outline-none focus:border-amber-500 focus:ring-8 focus:ring-amber-500/5 transition-all font-bold text-slate-900 text-sm md:text-base placeholder:opacity-40 resize-none"
+                      ></textarea>
                     </div>
                   </div>
-                  <button className="w-full bg-slate-900 hover:bg-amber-600 text-white font-black text-base md:text-lg py-3.5 md:py-5 rounded-xl shadow-2xl transition-all flex items-center justify-center gap-3 active:scale-95 group mt-2 md:mt-3">
-                    Send Your Message
-                    <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  <button
+                    disabled={status === "loading" || status === "success"}
+                    className={`w-full ${status === "success" ? "bg-green-600" : "bg-slate-900 cursor-pointer hover:bg-amber-600"} text-white font-black text-base md:text-lg py-3.5 md:py-5 rounded-xl shadow-2xl transition-all flex items-center justify-center gap-3 active:scale-95 group mt-2 md:mt-3 disabled:opacity-70 disabled:cursor-not-allowed`}
+                  >
+                    {status === "loading" ? (
+                      <>Sending... <Loader2 className="animate-spin" size={20} /></>
+                    ) : status === "success" ? (
+                      <>Message Sent! <CheckCircle2 size={20} /></>
+                    ) : (
+                      <>
+                        Send Your Message
+                        <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                      </>
+                    )}
                   </button>
+
+                  {status === "error" && (
+                    <p className="text-red-500 text-center font-bold text-xs mt-2">Failed to send message. Please try again.</p>
+                  )}
                 </form>
               </div>
             </div>
