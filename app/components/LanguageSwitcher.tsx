@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { ChevronDown, Globe } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -31,16 +31,16 @@ export default function LanguageSwitcher() {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 bg-white hover:bg-slate-50 px-4 py-2 rounded-xl border-2 border-amber-500 shadow-md transition-all duration-300 group cursor-pointer"
+        className="flex items-center gap-2 bg-[#9D174D] hover:bg-[#831843] px-3.5 py-2 rounded-xl shadow-md transition-all duration-300 group cursor-pointer border border-[#831843]"
       >
-        <Globe size={16} className="text-amber-600 animate-pulse" />
-        <span className="text-[14px] font-black text-slate-900 uppercase tracking-widest">
+        <span className="text-[14px] font-bold text-white uppercase tracking-wider">
           {currentLang.label}
         </span>
-        <ChevronDown
-          size={16}
-          className={`text-amber-600 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
-        />
+        {isOpen ? (
+          <ChevronUp size={16} className="text-white transition-transform duration-300" />
+        ) : (
+          <ChevronDown size={16} className="text-white transition-transform duration-300" />
+        )}
       </button>
 
       <AnimatePresence>
@@ -58,16 +58,13 @@ export default function LanguageSwitcher() {
                   setLanguage(lang.code as "en" | "hi");
                   setIsOpen(false);
                 }}
-                className={`w-full text-left px-4 py-2.5 text-[14px] font-semibold transition-colors flex items-center justify-between ${
+                className={`w-full text-left px-4 py-2.5 text-[15px] transition-colors flex items-center justify-between ${
                   language === lang.code
-                    ? "bg-amber-50 text-amber-600"
-                    : "text-slate-700 hover:bg-slate-50"
+                    ? "text-[#9D174D] font-bold bg-pink-50/50"
+                    : "text-slate-700 font-medium hover:bg-slate-50"
                 }`}
               >
                 {lang.label}
-                {language === lang.code && (
-                  <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                )}
               </button>
             ))}
           </motion.div>
