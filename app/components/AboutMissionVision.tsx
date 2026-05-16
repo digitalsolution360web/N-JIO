@@ -3,8 +3,11 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Target, Heart, Eye, CheckCircle, ArrowRight, ShieldCheck } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function AboutMissionVision() {
+  const { t } = useLanguage();
+
   return (
     <div className="space-y-0 font-sans">
       {/* About Us Section */}
@@ -31,7 +34,7 @@ export default function AboutMissionVision() {
                 </div>
                 <div>
                   <p className="text-3xl font-[900] text-slate-900 leading-none">10+ Years</p>
-                  <p className="text-slate-500 font-bold text-sm tracking-wide mt-1 uppercase">Trusted Service</p>
+                  <p className="text-slate-500 font-bold text-sm tracking-wide mt-1 uppercase">{t("home.about.trustedService")}</p>
                 </div>
               </div>
             </motion.div>
@@ -45,25 +48,25 @@ export default function AboutMissionVision() {
             >
               <div className="flex flex-col items-start mb-4 md:mb-6">
                 <span className="text-amber-600 font-black uppercase tracking-[0.2em] text-[12px] mb-3 flex items-center gap-2">
-                  <div className="w-8 h-[2px] bg-amber-500" /> Who We Are
+                  <div className="w-8 h-[2px] bg-amber-500" /> {t("home.about.subtitle")}
                 </span>
                 <h2 className="section-heading text-left">
-                  About <span className="text-amber-500">Us</span>
+                  {t("home.about.title")} <span className="text-amber-500">{t("home.about.titleHighlight")}</span>
                 </h2>
                 <div className="heading-underline" />
               </div>
 
               <div className="space-y-6 text-slate-600 text-lg md:text-xl leading-relaxed font-medium">
                 <p className="text-slate-900 font-bold italic border-l-4 border-amber-500 pl-6 py-2 bg-amber-50/50 rounded-r-xl">
-                  We are a non-profit organization dedicated to improving the lives of underprivileged communities.
+                  {t("home.about.desc1")}
                 </p>
                 <p className="opacity-80">
-                  Our team works with compassion, dedication, and a strong belief in humanity to serve society through various initiatives like food distribution, blood donation, environmental care, and elderly support.
+                  {t("home.about.desc2")}
                 </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 pt-6 md:pt-8">
-                {["Selfless Service", "Transparency", "Inclusive Growth", "Community Spirit"].map((item) => (
+                {[t("home.about.point1"), t("home.about.point2"), t("home.about.point3"), t("home.about.point4")].map((item) => (
                   <div key={item} className="flex items-center gap-4 bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
                     <div className="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-white">
                       <CheckCircle size={18} />
@@ -119,17 +122,17 @@ export default function AboutMissionVision() {
       <section className="py-10 md:py-14 bg-white">
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-24 text-center">
           <div className="flex flex-col items-center mb-8 md:mb-10">
-            <span className="text-amber-600 font-bold uppercase tracking-widest text-[12px] mb-3">Core Values</span>
-            <h2 className="section-heading">Why <span className="text-amber-600">Choose Us</span></h2>
+            <span className="text-amber-600 font-bold uppercase tracking-widest text-[12px] mb-3">{t("home.why.subtitle")}</span>
+            <h2 className="section-heading">{t("home.why.title")} <span className="text-amber-600">{t("home.why.titleHighlight")}</span></h2>
             <div className="heading-underline" />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {[
-              { title: "Selfless Service", desc: "No hidden motives, only pure intentions to help." },
-              { title: "Dedicated Team", desc: "Volunteers who treat service as their duty." },
-              { title: "Transparency", desc: "Every contribution goes exactly where it's needed." },
-              { title: "Commitment", desc: "Long-term dedication to social well-being." },
+              { title: t("home.why.card1Title"), desc: t("home.why.card1Desc") },
+              { title: t("home.why.card2Title"), desc: t("home.why.card2Desc") },
+              { title: t("home.why.card3Title"), desc: t("home.why.card3Desc") },
+              { title: t("home.why.card4Title"), desc: t("home.why.card4Desc") },
             ].map((item, idx) => (
               <motion.div
                 key={idx}
@@ -160,20 +163,20 @@ export default function AboutMissionVision() {
             className="relative z-10 space-y-6"
           >
             <h2 className="text-2xl md:text-[38px] font-[900] leading-tight tracking-tight">
-              Be a Part of the <span className="text-amber-500 italic">Change</span>
+              {t("home.cta.title")} <span className="text-amber-500 italic">{t("home.cta.titleHighlight")}</span>
             </h2>
             <p className="text-[17px] md:text-[22px] text-slate-400 max-w-2xl mx-auto leading-relaxed font-medium">
-              Your small contribution can make a big difference in someone's life. Join us today and help us create a better future for all.
+              {t("home.cta.desc")}
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center pt-6">
               <Link href="/donate">
                 <button className="bg-amber-500 cursor-pointer text-white px-12 py-5 rounded-2xl font-[900] text-xl hover:bg-amber-600 transition-all flex items-center justify-center gap-4 shadow-xl shadow-amber-500/20">
-                  Donate Now <ArrowRight size={22} />
+                  {t("home.cta.donate")} <ArrowRight size={22} />
                 </button>
               </Link>
               <Link href="/contact">
                 <button className="bg-white/5 cursor-pointer border border-white/10 text-white px-12 py-5 rounded-2xl font-[900] text-xl hover:bg-white/10 transition-all flex items-center justify-center gap-4">
-                  Become a Volunteer
+                  {t("home.cta.volunteer")}
                 </button>
               </Link>
             </div>

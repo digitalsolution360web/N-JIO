@@ -81,7 +81,7 @@ export default function Navbar() {
             </div>
             <div className="flex flex-col">
               <span className={`text-[17px] md:text-[22px] font-black leading-none tracking-tight ${isScrolled ? "text-slate-900" : "text-black"}`}>
-                Annapurna <span className="text-amber-600">Mahabahu</span>
+                {t("nav.logoName1")} <span className="text-amber-600">{t("nav.logoName2")}</span>
               </span>
               <span className={`text-[10px] md:text-[12px] font-bold tracking-[0.2em] uppercase opacity-60 ${isScrolled ? "text-slate-600" : "text-slate-800"}`}>
                 {t("hero.subtitle")}

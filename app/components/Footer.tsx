@@ -134,7 +134,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-6 md:pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6">
           <p className="text-xs text-gray-500 text-center md:text-left">
-            © 2025 <span className="text-white">Annapurna Mahabahu Sewa Sangh</span>. {t("footer.rights")}
+            © 2025 <span className="text-white">{t("hero.title")}</span>. {t("footer.rights")}
           </p>
           <p className="text-xs text-gray-500 text-center md:text-right">
             {t("footer.designed")} <a href="https://www.digitalsolution360.in/" target="_blank" rel="noopener noreferrer" className="text-amber-500 hover:underline">Digital Solution 360</a>

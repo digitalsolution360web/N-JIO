@@ -69,11 +69,11 @@ export default function DonatePage() {
   };
 
   const accountDetails = [
-    { label: t("donate.accName"), value: "ANNAPURNA MAHABAHU SEWA SANGH", icon: User },
-    { label: t("donate.bankName"), value: "Punjab National Bank", icon: Building2 },
+    { label: t("donate.accName"), value: t("donate.accNameVal"), icon: User },
+    { label: t("donate.bankName"), value: t("donate.bankNameVal"), icon: Building2 },
     { label: t("donate.accNum"), value: "1504000102293133", icon: CreditCard },
     { label: t("donate.ifsc"), value: "PUNB0150400", icon: Banknote },
-    { label: t("donate.branch"), value: "Naya Ganj, Ghaziabad", icon: Building2 },
+    { label: t("donate.branch"), value: t("donate.branchVal"), icon: Building2 },
   ];
 
   return (
@@ -119,8 +119,8 @@ export default function DonatePage() {
               className="bg-white rounded-[1rem] md:rounded-[2rem] px-5 py-4 md:px-8 md:py-6 border border-slate-100 shadow-[0_30px_70px_rgba(0,0,0,0.08)] flex flex-col items-center text-center group justify-center"
             >
               <h3 className="text-lg md:text-xl font-[1000] text-slate-900 mb-4 tracking-tighter leading-tight">
-                Annapurna Mahabahu <br />
-                <span className="text-amber-500 uppercase text-base md:text-lg tracking-[0.2em] font-black">Sewa Sangh</span>
+                {t("donate.ngoName1")} <br />
+                <span className="text-amber-500 uppercase text-base md:text-lg tracking-[0.2em] font-black">{t("donate.ngoName2")}</span>
               </h3>
 
               <div className="relative w-[280px] md:w-[420px] aspect-square rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden bg-white shadow-inner mb-4 md:mb-6 border border-slate-50 mx-auto">

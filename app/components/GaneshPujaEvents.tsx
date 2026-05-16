@@ -3,44 +3,47 @@
 import { motion } from "framer-motion";
 import { Play, Calendar, ClipboardList, Sparkles } from "lucide-react";
 import Image from "next/image";
-
-const events = [
-  {
-    id: 1,
-    title: "गणेश पूजा",
-    date: "29 अगस्त 2025",
-    videoUrl: "https://youtu.be/SuiKM1nGuzY?si=HAsRK2VoyLv3zaF3",
-    thumbnail: "/1.jpg",
-    color: "from-pink-500 via-rose-500 to-red-600",
-    bgLight: "bg-pink-50/50",
-    textColor: "text-pink-600",
-    glow: "shadow-pink-500/20",
-  },
-  {
-    id: 2,
-    title: "गणेश पूजा",
-    date: "28 अगस्त 2025",
-    videoUrl: "https://youtu.be/fTJNGXK7oN4?si=uU2cnfnS5KZZ48so",
-    thumbnail: "/2.jpg",
-    color: "from-blue-500 via-indigo-500 to-violet-600",
-    bgLight: "bg-blue-50/50",
-    textColor: "text-blue-600",
-    glow: "shadow-indigo-500/20",
-  },
-  {
-    id: 3,
-    title: "गणेश पूजा",
-    date: "27 अगस्त 2025",
-    videoUrl: "https://youtu.be/dubCsYwd5_A?si=kvmrkQU4BlXUW0f8",
-    thumbnail: "/3.jpg",
-    color: "from-orange-500 via-amber-500 to-yellow-600",
-    bgLight: "bg-orange-50/50",
-    textColor: "text-orange-700",
-    glow: "shadow-orange-500/20",
-  },
-];
+import { useLanguage } from "../context/LanguageContext";
 
 export default function GaneshPujaEvents() {
+  const { t } = useLanguage();
+
+  const events = [
+    {
+      id: 1,
+      title: t("home.ganesh.puja"),
+      date: t("home.ganesh.date1"),
+      videoUrl: "https://youtu.be/SuiKM1nGuzY?si=HAsRK2VoyLv3zaF3",
+      thumbnail: "/1.jpg",
+      color: "from-pink-500 via-rose-500 to-red-600",
+      bgLight: "bg-pink-50/50",
+      textColor: "text-pink-600",
+      glow: "shadow-pink-500/20",
+    },
+    {
+      id: 2,
+      title: t("home.ganesh.puja"),
+      date: t("home.ganesh.date2"),
+      videoUrl: "https://youtu.be/fTJNGXK7oN4?si=uU2cnfnS5KZZ48so",
+      thumbnail: "/2.jpg",
+      color: "from-blue-500 via-indigo-500 to-violet-600",
+      bgLight: "bg-blue-50/50",
+      textColor: "text-blue-600",
+      glow: "shadow-indigo-500/20",
+    },
+    {
+      id: 3,
+      title: t("home.ganesh.puja"),
+      date: t("home.ganesh.date3"),
+      videoUrl: "https://youtu.be/dubCsYwd5_A?si=kvmrkQU4BlXUW0f8",
+      thumbnail: "/3.jpg",
+      color: "from-orange-500 via-amber-500 to-yellow-600",
+      bgLight: "bg-orange-50/50",
+      textColor: "text-orange-700",
+      glow: "shadow-orange-500/20",
+    },
+  ];
+
   const openVideo = (url: string) => {
     window.open(url, "_blank");
   };
@@ -82,7 +85,7 @@ export default function GaneshPujaEvents() {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-3xl md:text-5xl font-[1000] text-transparent bg-clip-text bg-gradient-to-b from-red-600 to-red-900 mb-2 tracking-tighter drop-shadow-sm py-2 leading-normal"
           >
-            !! श्री गणेशाय नमः !!
+            {t("home.ganesh.greeting")}
           </motion.h2>
 
           <motion.h3
@@ -91,7 +94,7 @@ export default function GaneshPujaEvents() {
             transition={{ delay: 0.2 }}
             className="text-xl md:text-3xl font-extrabold text-indigo-950 mb-6"
           >
-            एकादशम् श्री गणेश पूजा महोत्सव
+            {t("home.ganesh.festival")}
           </motion.h3>
 
           <motion.div
@@ -104,7 +107,7 @@ export default function GaneshPujaEvents() {
             <div className="relative flex items-center gap-3 bg-white px-8 py-3 rounded-xl shadow-lg border border-orange-50">
               <ClipboardList className="text-orange-600 w-5 h-5" />
               <span className="text-lg md:text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-700 to-red-700 uppercase tracking-wider">
-                कार्यक्रम विवरण
+                {t("home.ganesh.details")}
               </span>
             </div>
           </motion.div>
@@ -170,7 +173,7 @@ export default function GaneshPujaEvents() {
 
                   <div className="absolute bottom-4 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <div className="bg-white/20 backdrop-blur-md border border-white/30 px-4 py-1.5 rounded-full text-white text-[10px] font-black uppercase tracking-[0.15em]">
-                      Watch Live
+                      {t("home.ganesh.watchLive")}
                     </div>
                   </div>
                 </div>

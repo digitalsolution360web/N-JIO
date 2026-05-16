@@ -31,7 +31,7 @@ export default function LanguageSwitcher() {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 bg-white hover:bg-slate-50 px-4 py-2 rounded-xl border-2 border-amber-500 shadow-md transition-all duration-300 group"
+        className="flex items-center gap-2 bg-white hover:bg-slate-50 px-4 py-2 rounded-xl border-2 border-amber-500 shadow-md transition-all duration-300 group cursor-pointer"
       >
         <Globe size={16} className="text-amber-600 animate-pulse" />
         <span className="text-[14px] font-black text-slate-900 uppercase tracking-widest">
