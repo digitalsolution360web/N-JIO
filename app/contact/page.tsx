@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Send, MessageSquare, Clock, ArrowRight, Loader2, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 import SuccessToast from "../components/SuccessToast";
+import { useLanguage } from "../context/LanguageContext";
 
 // Social Icons
 const Facebook = ({ size = 24 }: { size?: number }) => (
@@ -20,10 +21,11 @@ const WhatsApp = ({ size = 24 }: { size?: number }) => (
 );
 
 export default function ContactPage() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    inquiryType: "General Inquiry",
+    inquiryType: t("contact.type.general"),
     message: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -48,7 +50,7 @@ export default function ContactPage() {
 
       if (response.ok) {
         setStatus("success");
-        setFormData({ name: "", email: "", inquiryType: "General Inquiry", message: "" });
+        setFormData({ name: "", email: "", inquiryType: t("contact.type.general"), message: "" });
         setShowToast(true);
         setTimeout(() => setStatus("idle"), 5000);
       } else {
@@ -71,7 +73,7 @@ export default function ContactPage() {
       <SuccessToast 
         show={showToast} 
         onClose={() => setShowToast(false)} 
-        message="Thank you! Your message has been sent successfully."
+        message={t("contact.successToast")}
       />
 
       <div className="max-w-[1600px] mx-auto px-4 md:px-12 lg:px-24">
@@ -79,14 +81,14 @@ export default function ContactPage() {
         {/* Header - Compact */}
         <div className="flex flex-col items-center text-center mb-8 md:mb-12">
           <span className="flex items-center gap-2 text-amber-600 font-bold uppercase tracking-widest text-[11px] mb-2 md:mb-3">
-            <MessageSquare size={16} /> Get In Touch
+            <MessageSquare size={16} /> {t("contact.getInTouch")}
           </span>
           <h1 className="text-2xl md:text-5xl font-[1000] text-slate-900 tracking-tight text-center">
-            Contact <span className="text-amber-500 italic">Us</span>
+            {t("contact.title1")} <span className="text-amber-500 italic">{t("contact.title2")}</span>
           </h1>
           <div className="h-1.5 w-16 md:w-24 bg-amber-500 rounded-full mt-3 md:mt-4" />
           <p className="mt-5 md:mt-8 text-slate-500 text-base md:text-xl max-w-2xl font-medium opacity-80 px-4">
-            Have questions or want to join our mission? Reach out to us, and we'll be happy to connect.
+            {t("contact.desc")}
           </p>
         </div>
 
@@ -96,13 +98,13 @@ export default function ContactPage() {
           <div className="lg:col-span-4 space-y-5 md:space-y-8">
             <div className="bg-[#0f172a] text-white p-6 md:p-8 rounded-[1rem] md:rounded-[2rem] shadow-2xl relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl" />
-              <h3 className="text-xl md:text-2xl font-black mb-6 md:mb-8">Contact Information</h3>
+              <h3 className="text-xl md:text-2xl font-black mb-6 md:mb-8">{t("contact.info")}</h3>
 
               <ul className="space-y-6 md:space-y-10">
                 {[
-                  { icon: Phone, label: "Call Us", val: "7982034823", sub: "Mon-Sat 9am to 6pm" },
-                  { icon: Mail, label: "Email Us", val: "info@annapurnamahabahu.com", sub: "We'll reply within 24h" },
-                  { icon: MapPin, label: "Visit Us", val: "750 Chirag Delhi, Delhi", sub: "New Delhi, 110017" },
+                  { icon: Phone, label: t("contact.phone"), val: "7982034823", sub: t("contact.phoneSub") },
+                  { icon: Mail, label: t("contact.email"), val: "info@annapurnamahabahu.com", sub: t("contact.emailSub") },
+                  { icon: MapPin, label: t("contact.address"), val: t("contact.addressVal"), sub: t("contact.addressSub") },
                 ].map((item, i) => (
                   <li key={i} className="flex gap-4 md:gap-6 group">
                     <div className="w-12 h-12 md:w-14 md:h-14 bg-white/5 rounded-xl flex items-center justify-center text-amber-500 transition-colors group-hover:bg-amber-500 group-hover:text-white border border-white/10">
@@ -118,7 +120,7 @@ export default function ContactPage() {
               </ul>
 
               <div className="mt-10 md:mt-16 pt-8 md:pt-10 border-t border-white/10">
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Follow Our Journey</p>
+                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">{t("contact.follow")}</p>
                 <div className="flex gap-3 md:gap-4">
                   {[
                     { icon: Facebook, href: "https://www.facebook.com/annapurnamahabahu" },
@@ -146,8 +148,8 @@ export default function ContactPage() {
                 <Clock size={24} className="md:w-7 md:h-7" />
               </div>
               <div>
-                <p className="font-black text-slate-900 text-base md:text-lg leading-tight">Operational Hours</p>
-                <p className="text-slate-500 text-[10px] md:text-xs font-bold mt-1.5 uppercase tracking-wide">Available 24/7 for Emergency</p>
+                <p className="font-black text-slate-900 text-base md:text-lg leading-tight">{t("contact.hours")}</p>
+                <p className="text-slate-500 text-[10px] md:text-xs font-bold mt-1.5 uppercase tracking-wide">{t("contact.hoursSub")}</p>
               </div>
             </div>
           </div>
@@ -156,59 +158,59 @@ export default function ContactPage() {
           <div className="lg:col-span-8">
             <div className="bg-white p-1 md:p-4 rounded-[1rem] md:rounded-[2rem] border border-slate-100 shadow-sm relative">
               <div className="bg-slate-50 p-6 md:p-14 rounded-[1rem] md:rounded-[2rem]">
-                <h3 className="text-2xl md:text-3xl font-[1000] text-slate-900 mb-6 md:mb-10 tracking-tight">Send us a <span className="text-amber-500 italic">Message</span></h3>
+                <h3 className="text-2xl md:text-3xl font-[1000] text-slate-900 mb-6 md:mb-10 tracking-tight">{t("contact.sendMsg").split(' ').slice(0, 3).join(' ')} <span className="text-amber-500 italic">{t("contact.sendMsg").split(' ').slice(3).join(' ')}</span></h3>
 
                 <form className="space-y-4 md:space-y-8" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
                     <div className="space-y-1.5">
-                      <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest ml-1">Full Name</label>
+                      <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest ml-1">{t("contact.name")}</label>
                       <input
                         type="text"
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        placeholder="Your Name"
+                        placeholder={t("contact.namePlaceholder")}
                         className="w-full h-14 md:h-16 px-6 rounded-[1rem] md:rounded-[2rem] border-none bg-white shadow-sm font-bold text-slate-900 placeholder:text-slate-300 focus:ring-2 focus:ring-amber-500 transition-all text-sm md:text-base"
                       />
                     </div>
                     <div className="space-y-1.5">
-                      <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest ml-1">Email Address</label>
+                      <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest ml-1">{t("contact.emailLabel")}</label>
                       <input
                         type="email"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        placeholder="email@example.com"
+                        placeholder={t("contact.emailPlaceholder")}
                         className="w-full h-14 md:h-16 px-6 rounded-xl md:rounded-2xl border-none bg-white shadow-sm font-bold text-slate-900 placeholder:text-slate-300 focus:ring-2 focus:ring-amber-500 transition-all text-sm md:text-base"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest ml-1">How can we help?</label>
+                    <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest ml-1">{t("contact.help")}</label>
                     <select
                       name="inquiryType"
                       value={formData.inquiryType}
                       onChange={handleChange}
                       className="w-full h-14 md:h-16 px-6 rounded-xl md:rounded-2xl border-none bg-white shadow-sm font-bold text-slate-900 focus:ring-2 focus:ring-amber-500 transition-all appearance-none cursor-pointer text-sm md:text-base"
                     >
-                      <option>General Inquiry</option>
-                      <option>Donation Information</option>
-                      <option>Volunteer Opportunity</option>
-                      <option>Report a Need</option>
+                      <option>{t("contact.type.general")}</option>
+                      <option>{t("contact.type.donation")}</option>
+                      <option>{t("contact.type.volunteer")}</option>
+                      <option>{t("contact.type.report")}</option>
                     </select>
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest ml-1">Your Message</label>
+                    <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest ml-1">{t("contact.msg")}</label>
                     <textarea
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      placeholder="Write your message here..."
+                      placeholder={t("contact.msgPlaceholder")}
                       rows={4}
                       className="w-full p-6 rounded-[1.5rem] md:rounded-[2rem] border-none bg-white shadow-sm font-bold text-slate-900 placeholder:text-slate-300 focus:ring-2 focus:ring-amber-500 transition-all text-sm md:text-base"
                     />
@@ -219,16 +221,16 @@ export default function ContactPage() {
                     className={`w-full ${status === "success" ? "bg-green-600" : "bg-slate-900"} text-white py-4 cursor-pointer md:py-6 rounded-xl md:rounded-2xl font-[900] text-base md:text-xl hover:bg-slate-800 flex items-center justify-center gap-3 shadow-2xl transition-all active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed`}
                   >
                     {status === "loading" ? (
-                      <>Sending... <Loader2 className="animate-spin" size={18} /></>
+                      <>{t("contact.sending")} <Loader2 className="animate-spin" size={18} /></>
                     ) : status === "success" ? (
-                      <>Message Sent! <CheckCircle2 size={18} /></>
+                      <>{t("contact.sent")} <CheckCircle2 size={18} /></>
                     ) : (
-                      <>Send Message <Send size={18} /></>
+                      <>{t("contact.send")} <Send size={18} /></>
                     )}
                   </button>
 
                   {status === "error" && (
-                    <p className="text-red-500 text-center font-bold mt-2">Failed to send message. Please try again.</p>
+                    <p className="text-red-500 text-center font-bold mt-2">{t("contact.failed")}</p>
                   )}
                 </form>
               </div>

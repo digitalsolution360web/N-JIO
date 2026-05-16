@@ -5,10 +5,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { Menu, X, Heart, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "../context/LanguageContext";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,14 +22,14 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "About Us", href: "/about" },
-    { name: "Services", href: "/services" },
-    { name: "Gallery", href: "/gallery" },
-    { name: "Contact", href: "/contact" },
+    { name: t("nav.home"), href: "/" },
+    { name: t("nav.about"), href: "/about" },
+    { name: t("nav.services"), href: "/services" },
+    { name: t("nav.gallery"), href: "/gallery" },
+    { name: t("nav.contact"), href: "/contact" },
   ];
 
-  const notice = "Welcome to Annapurna Mahabahu Sewa Sangh";
+  const notice = t("nav.welcome");
 
   return (
     <>
@@ -41,7 +44,7 @@ export default function Navbar() {
               7982034823
             </span>
             <div className="h-4 w-[1px] bg-slate-700" />
-            <span className="text-amber-500 font-black tracking-widest uppercase">Reg No: 1875</span>
+            <span className="text-amber-500 font-black tracking-widest uppercase">{t("nav.regNo")}</span>
           </div>
 
           {/* Right Side: MARQUEE SECTION */}
@@ -81,7 +84,7 @@ export default function Navbar() {
                 Annapurna <span className="text-amber-600">Mahabahu</span>
               </span>
               <span className={`text-[10px] md:text-[12px] font-bold tracking-[0.2em] uppercase opacity-60 ${isScrolled ? "text-slate-600" : "text-slate-800"}`}>
-                Sewa Sangh
+                {t("hero.subtitle")}
               </span>
             </div>
           </Link>
@@ -99,23 +102,30 @@ export default function Navbar() {
               </Link>
             ))}
             <div className="w-[1px] h-6 bg-slate-200 ml-2" />
+            
+            {/* Language Switcher added here */}
+            <LanguageSwitcher />
+
             <Link
               href="/donate"
               className="relative flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white px-8 py-3.5 rounded-full text-[15px] font-extrabold shadow-xl shadow-amber-500/20 transition-all hover:-translate-y-1 active:scale-95 overflow-hidden group"
             >
               <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-[150%] skew-x-12 group-hover:translate-x-[150%] transition-transform duration-1000" />
               <Heart size={18} className="fill-current" />
-              Donate Now
+              {t("nav.donate")}
             </Link>
           </div>
 
           {/* Mobile Toggle */}
-          <button
-            className={`lg:hidden p-2 rounded-xl ${isScrolled ? "bg-amber-50 text-amber-600" : "bg-slate-100 text-slate-800"}`}
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
-          </button>
+          <div className="flex items-center gap-4 lg:hidden">
+            <LanguageSwitcher />
+            <button
+              className={`p-2 rounded-xl ${isScrolled ? "bg-amber-50 text-amber-600" : "bg-slate-100 text-slate-800"}`}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+            </button>
+          </div>
         </div>
 
         <AnimatePresence>
@@ -142,7 +152,7 @@ export default function Navbar() {
                 className="bg-amber-500 text-white py-4 rounded-[1.2rem] text-center font-black text-lg shadow-lg shadow-amber-500/20 mt-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Donate Now
+                {t("nav.donate")}
               </Link>
             </motion.div>
           )}

@@ -3,59 +3,62 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
-
-const activities = [
-  {
-    title: "Jal Seva",
-    desc: "Providing clean drinking water to people during extreme heat conditions. Our volunteers work tirelessly to ensure hydration for the needy.",
-    img: "/jal-sewa.png",
-    bg: "bg-white"
-  },
-  {
-    title: "Ganesh Puja",
-    desc: "Organizing religious events to promote unity and cultural values. We believe in the power of spiritual gathering and community harmony.",
-    img: "/ganesh-puja.png",
-    bg: "bg-amber-50/50"
-  },
-  {
-    title: "Vriddhashram Seva",
-    desc: "Supporting and spending time with elderly people in old age homes. We provide compassion, care, and essentials for a dignified life.",
-    img: "/old-age.png",
-    bg: "bg-white"
-  },
-  {
-    title: "Bhandara Seva",
-    desc: "Distributing free meals to the needy and underprivileged. No one should go to sleep hungry in our society.",
-    img: "/bhandara.png",
-    bg: "bg-slate-50"
-  },
-  {
-    title: "Plantation Drive",
-    desc: "Promoting environmental awareness through tree plantation campaigns. We are committed to a greener future for the next generation.",
-    img: "/plantation.png",
-    bg: "bg-white"
-  },
-  {
-    title: "Blood Donation",
-    desc: "Organizing blood donation camps to save lives. A single unit of blood can save multiple lives in emergencies.",
-    img: "/blood-donation.png",
-    bg: "bg-rose-50/30"
-  },
-  {
-    title: "Murti Visarjan Seva",
-    desc: "Assisting in religious activities with proper management and care. We ensure eco-friendly practices and social order.",
-    img: "/murti-visersajan.png",
-    bg: "bg-white"
-  },
-  {
-    title: "Social Harmony",
-    desc: "Encouraging unity, equality, and harmony in society. Our campaigns focus on breaking barriers and fostering brotherhood.",
-    img: "/kalash-yatara.png",
-    bg: "bg-blue-50/30"
-  },
-];
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Activities() {
+  const { t } = useLanguage();
+
+  const activities = [
+    {
+      title: t("activities.jalSeva.title"),
+      desc: t("activities.jalSeva.desc"),
+      img: "/jal-sewa.png",
+      bg: "bg-white"
+    },
+    {
+      title: t("activities.ganeshPuja.title"),
+      desc: t("activities.ganeshPuja.desc"),
+      img: "/ganesh-puja.png",
+      bg: "bg-amber-50/50"
+    },
+    {
+      title: t("activities.vriddhashram.title"),
+      desc: t("activities.vriddhashram.desc"),
+      img: "/old-age.png",
+      bg: "bg-white"
+    },
+    {
+      title: t("activities.bhandara.title"),
+      desc: t("activities.bhandara.desc"),
+      img: "/bhandara.png",
+      bg: "bg-slate-50"
+    },
+    {
+      title: t("activities.plantation.title"),
+      desc: t("activities.plantation.desc"),
+      img: "/plantation.png",
+      bg: "bg-white"
+    },
+    {
+      title: t("activities.blood.title"),
+      desc: t("activities.blood.desc"),
+      img: "/blood-donation.png",
+      bg: "bg-rose-50/30"
+    },
+    {
+      title: t("activities.murti.title"),
+      desc: t("activities.murti.desc"),
+      img: "/murti-visersajan.png",
+      bg: "bg-white"
+    },
+    {
+      title: t("activities.harmony.title"),
+      desc: t("activities.harmony.desc"),
+      img: "/kalash-yatara.png",
+      bg: "bg-blue-50/30"
+    },
+  ];
+
   return (
     <div id="services">
       {/* Header Section */}
@@ -63,10 +66,10 @@ export default function Activities() {
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-24">
           <div className="flex flex-col items-center text-center">
             <span className="flex items-center gap-2 text-amber-600 font-bold uppercase tracking-widest text-[12px] mb-2 md:mb-3">
-               <Sparkles size={16} /> Impactful Initiatives
+               <Sparkles size={16} /> {t("activities.heading")}
             </span>
             <h2 className="section-heading text-center">
-               Our <span className="text-amber-500 italic">Activities</span>
+               {t("activities.title1")} <span className="text-amber-500 italic">{t("activities.title2")}</span>
             </h2>
             <div className="heading-underline" />
           </div>
@@ -125,7 +128,7 @@ export default function Activities() {
                   
                   <div className="pt-6 mt-auto">
                     <button className="group/btn relative flex items-center gap-3 bg-slate-50 hover:bg-amber-500 text-slate-900 hover:text-white px-8 py-3 rounded-2xl font-black uppercase tracking-widest text-[11px] transition-all duration-500 shadow-sm hover:shadow-xl hover:shadow-amber-500/20 hover:-translate-y-1">
-                      Learn More 
+                      {t("activities.learnMore")} 
                       <ArrowRight size={16} className="group-hover/btn:translate-x-2 transition-transform duration-500" />
                     </button>
                   </div>

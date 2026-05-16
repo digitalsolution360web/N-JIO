@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 // Brand Icons defined locally as Lucide removed them
 const Facebook = ({ size = 24 }: { size?: number }) => (
@@ -24,6 +25,8 @@ const WhatsApp = ({ size = 24 }: { size?: number }) => (
 );
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer id="contact" className="bg-[#111827] text-gray-300 pt-12 md:pt-16 pb-24 md:pb-8 px-6 md:px-12 lg:px-24 border-t border-gray-800">
       <div className="max-w-[1600px] mx-auto">
@@ -39,7 +42,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-gray-400 leading-relaxed text-[16px]">
-              "Annapurna Mahabahu Sewa Sangh" is a charitable organization dedicated to helping poor and underprivileged people. Service to humanity is our ultimate goal.
+              {t("footer.desc")}
             </p>
             <div className="flex gap-4">
               {[
@@ -64,14 +67,14 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-white font-bold text-lg mb-6 border-l-4 border-amber-500 pl-3 uppercase tracking-wider text-sm">Quick Links</h3>
+            <h3 className="text-white font-bold text-lg mb-6 border-l-4 border-amber-500 pl-3 uppercase tracking-wider text-sm">{t("footer.quickLinks")}</h3>
             <ul className="space-y-3">
               {[
-                { name: "Home", href: "/" },
-                { name: "About Us", href: "/about" },
-                { name: "Services", href: "/services" },
-                { name: "Gallery", href: "/gallery" },
-                { name: "Donation", href: "/donate" },
+                { name: t("nav.home"), href: "/" },
+                { name: t("nav.about"), href: "/about" },
+                { name: t("nav.services"), href: "/services" },
+                { name: t("nav.gallery"), href: "/gallery" },
+                { name: t("nav.donate"), href: "/donate" },
               ].map((item) => (
                 <li key={item.name}>
                   <Link href={item.href} className="text-[16px] hover:text-amber-500 transition-colors flex items-center gap-2 group">
@@ -85,12 +88,12 @@ export default function Footer() {
 
           {/* Support */}
           <div>
-            <h3 className="text-white font-bold text-lg mb-6 border-l-4 border-amber-500 pl-3 uppercase tracking-wider text-sm">Support</h3>
+            <h3 className="text-white font-bold text-lg mb-6 border-l-4 border-amber-500 pl-3 uppercase tracking-wider text-sm">{t("footer.support")}</h3>
             <ul className="space-y-3">
               {[
-                { name: "Our Mission", href: "/about" },
-                { name: "Success Stories", href: "/gallery" },
-                { name: "FAQs", href: "#" },
+                { name: t("footer.mission"), href: "/about" },
+                { name: t("footer.stories"), href: "/gallery" },
+                { name: t("footer.faqs"), href: "#" },
               ].map((item) => (
                 <li key={item.name}>
                   <Link href={item.href} className="text-[16px] hover:text-amber-500 transition-colors flex items-center gap-2 group">
@@ -104,13 +107,13 @@ export default function Footer() {
 
           {/* Contact Details */}
           <div>
-            <h3 className="text-white font-bold text-lg mb-6 border-l-4 border-amber-500 pl-3 uppercase tracking-wider text-sm">Contact Us</h3>
+            <h3 className="text-white font-bold text-lg mb-6 border-l-4 border-amber-500 pl-3 uppercase tracking-wider text-sm">{t("nav.contact")}</h3>
             <ul className="space-y-5">
               <li className="flex gap-4">
                 <div className="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center text-amber-500 shrink-0">
                   <MapPin size={20} />
                 </div>
-                <p className="text-[16px] leading-relaxed">750 Chirag Delhi, <br/>Delhi, 110017</p>
+                <p className="text-[16px] leading-relaxed">{t("contact.addressVal")}, <br/>{t("contact.addressSub")}</p>
               </li>
               <li className="flex gap-4">
                 <div className="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center text-amber-500 shrink-0">
@@ -131,10 +134,10 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-6 md:pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6">
           <p className="text-xs text-gray-500 text-center md:text-left">
-            © 2025 <span className="text-white">Annapurna Mahabahu Sewa Sangh</span>. All Rights Reserved.
+            © 2025 <span className="text-white">Annapurna Mahabahu Sewa Sangh</span>. {t("footer.rights")}
           </p>
           <p className="text-xs text-gray-500 text-center md:text-right">
-            Designed & Developed by <a href="https://www.digitalsolution360.in/" target="_blank" rel="noopener noreferrer" className="text-amber-500 hover:underline">Digital Solution 360</a>
+            {t("footer.designed")} <a href="https://www.digitalsolution360.in/" target="_blank" rel="noopener noreferrer" className="text-amber-500 hover:underline">Digital Solution 360</a>
           </p>
         </div>
       </div>

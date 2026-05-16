@@ -3,13 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Users, Heart, GraduationCap, MapPin } from "lucide-react";
-
-const stats = [
-  { label: "Lives Impacted", val: 10000, suffix: "+", icon: Users, color: "text-amber-500", bg: "bg-amber-50" },
-  { label: "Volunteers", val: 500, suffix: "+", icon: Heart, color: "text-rose-500", bg: "bg-rose-50" },
-  { label: "Successful Projects", val: 150, suffix: "+", icon: GraduationCap, color: "text-blue-500", bg: "bg-blue-50" },
-  { label: "Service Districts", val: 24, suffix: "+", icon: MapPin, color: "text-emerald-500", bg: "bg-emerald-50" },
-];
+import { useLanguage } from "../context/LanguageContext";
 
 function Counter({ value, suffix }: { value: number; suffix: string }) {
   const [count, setCount] = useState(0);
@@ -40,6 +34,15 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 }
 
 export default function ImpactStats() {
+  const { t } = useLanguage();
+
+  const stats = [
+    { label: t("hero.stats.lives"), val: 10000, suffix: "+", icon: Users, color: "text-amber-500", bg: "bg-amber-50" },
+    { label: t("hero.stats.volunteers"), val: 500, suffix: "+", icon: Heart, color: "text-rose-500", bg: "bg-rose-50" },
+    { label: t("stats.successfulProjects"), val: 150, suffix: "+", icon: GraduationCap, color: "text-blue-500", bg: "bg-blue-50" },
+    { label: t("stats.serviceDistricts"), val: 24, suffix: "+", icon: MapPin, color: "text-emerald-500", bg: "bg-emerald-50" },
+  ];
+
   return (
     <section className="py-8 bg-slate-900 text-white relative overflow-hidden">
       {/* Decals */}
@@ -57,14 +60,14 @@ export default function ImpactStats() {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-amber-500 font-black tracking-[0.3em] uppercase text-xs mb-4"
           >
-            Real Impact
+            {t("stats.realImpact")}
           </motion.span>
           <motion.h2 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             className="text-2xl md:text-4xl font-[900] leading-tight"
           >
-            Numbers that Tell <br/> Our <span className="text-amber-500 italic">Selfless Journey</span>
+            {t("stats.title1")} <br/> {t("stats.title2")} <span className="text-amber-500 italic">{t("stats.title3")}</span>
           </motion.h2>
           <div className="h-1.5 w-24 bg-amber-500 rounded-full mt-8" />
         </div>

@@ -9,15 +9,17 @@ import {
   Smartphone, Building2, User, Copy, Check, Send, Mail, Phone, MessageSquare, Loader2
 } from "lucide-react";
 import SuccessToast from "../components/SuccessToast";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function DonatePage() {
+  const { t } = useLanguage();
   const [copied, setCopied] = useState(false);
   const upiId = "paytmqr6hos0g@ptys";
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    inquiryType: "Donation Information",
+    inquiryType: t("contact.type.donation"),
     message: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -42,7 +44,7 @@ export default function DonatePage() {
 
       if (response.ok) {
         setStatus("success");
-        setFormData({ name: "", email: "", inquiryType: "Donation Information", message: "" });
+        setFormData({ name: "", email: "", inquiryType: t("contact.type.donation"), message: "" });
         setShowToast(true);
         setTimeout(() => setStatus("idle"), 5000);
       } else {
@@ -59,7 +61,6 @@ export default function DonatePage() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  // ... rest of the component
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(upiId);
@@ -68,11 +69,11 @@ export default function DonatePage() {
   };
 
   const accountDetails = [
-    { label: "Account Name", value: "ANNAPURNA MAHABAHU SEWA SANGH", icon: User },
-    { label: "Bank Name", value: "Punjab National Bank", icon: Building2 },
-    { label: "Account Number", value: "1504000102293133", icon: CreditCard },
-    { label: "IFSC Code", value: "PUNB0150400", icon: Banknote },
-    { label: "Branch", value: "Naya Ganj, Ghaziabad", icon: Building2 },
+    { label: t("donate.accName"), value: "ANNAPURNA MAHABAHU SEWA SANGH", icon: User },
+    { label: t("donate.bankName"), value: "Punjab National Bank", icon: Building2 },
+    { label: t("donate.accNum"), value: "1504000102293133", icon: CreditCard },
+    { label: t("donate.ifsc"), value: "PUNB0150400", icon: Banknote },
+    { label: t("donate.branch"), value: "Naya Ganj, Ghaziabad", icon: Building2 },
   ];
 
   return (
@@ -80,7 +81,7 @@ export default function DonatePage() {
       <SuccessToast
         show={showToast}
         onClose={() => setShowToast(false)}
-        message="Thank you! Your donation enquiry has been received."
+        message={t("donate.successToast")}
       />
       <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
 
@@ -91,18 +92,18 @@ export default function DonatePage() {
             animate={{ opacity: 1, y: 0 }}
             className="flex items-center gap-2 text-amber-600 font-extrabold uppercase tracking-[0.2em] text-[11px] md:text-[12px] mb-2"
           >
-            <Heart size={14} className="text-rose-500 fill-rose-500" /> SUPPORT OUR CAUSE
+            <Heart size={14} className="text-rose-500 fill-rose-500" /> {t("donate.supportCause")}
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             className="text-2xl md:text-[40px] font-[1000] text-slate-900 tracking-tighter mb-3 leading-tight"
           >
-            Every Act of <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600 italic">Generosity</span> Counts
+            {t("donate.title1")} <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600 italic">{t("donate.title2")}</span> {t("donate.title3")}
           </motion.h1>
           <div className="h-1 w-20 md:w-24 bg-gradient-to-r from-amber-500 to-orange-600 rounded-full mb-4 md:mb-6" />
           <p className="text-slate-600 text-base md:text-xl font-medium max-w-3xl leading-relaxed opacity-90 italic">
-            "Your gift provides the foundation for our programs and helps us reach thousands of people in need."
+            {t("donate.quote")}
           </p>
         </div>
 
@@ -137,7 +138,7 @@ export default function DonatePage() {
                   <div className="flex items-center gap-3 md:gap-4">
                     <QrCode size={20} className="text-amber-500 group-hover:text-white" />
                     <div className="text-left">
-                      <p className="text-[9px] font-black text-slate-400 group-hover:text-white/60 uppercase tracking-widest leading-none mb-1">Scan to Pay</p>
+                      <p className="text-[9px] font-black text-slate-400 group-hover:text-white/60 uppercase tracking-widest leading-none mb-1">{t("donate.scanToPay")}</p>
                       <span className="font-black tracking-tight text-sm md:text-lg">{upiId}</span>
                     </div>
                   </div>
@@ -147,12 +148,12 @@ export default function DonatePage() {
                     title="Copy UPI ID"
                   >
                     {copied ? <Check size={18} className="text-green-400" /> : <Copy size={18} className="group-hover/btn:scale-110 transition-transform" />}
-                    <span className="text-[10px] font-black uppercase tracking-widest">{copied ? "Copied" : "Copy"}</span>
+                    <span className="text-[10px] font-black uppercase tracking-widest">{copied ? t("donate.copied") : t("donate.copy")}</span>
                   </button>
                 </div>
 
                 <p className="text-slate-400 font-black text-[12px] uppercase tracking-[0.4em] opacity-60">
-                  Trusted Payment Gateway
+                  {t("donate.trustedGateway")}
                 </p>
               </div>
             </motion.div>
@@ -170,7 +171,7 @@ export default function DonatePage() {
 
               <div className="relative z-10 mb-3 md:mb-4">
                 <h3 className="text-lg md:text-xl font-[1000] text-white mb-1 tracking-tighter leading-tight">
-                  Bank Transfer <span className="text-amber-500 italic">Details</span>
+                  {t("donate.bankDetails")} <span className="text-amber-500 italic">{t("donate.bankDetailsItalic")}</span>
                 </h3>
                 <div className="h-1 w-12 bg-amber-500 rounded-full" />
               </div>
@@ -194,7 +195,7 @@ export default function DonatePage() {
                   <Info size={18} className="text-amber-500" />
                 </div>
                 <p className="text-[10px] font-black text-amber-100/80 leading-tight uppercase tracking-widest">
-                  Send transaction screenshot on WhatsApp <br /> for instant donation receipt.
+                  {t("donate.whatsappHint")}
                 </p>
               </div>
             </motion.div>
@@ -214,14 +215,14 @@ export default function DonatePage() {
               {/* Left Side: Text */}
               <div className="space-y-4 md:space-y-6">
                 <div className="inline-flex items-center gap-2 bg-white border border-slate-200 text-amber-600 px-4 py-2 rounded-full font-black text-[11px] uppercase tracking-[0.3em] shadow-sm">
-                  <MessageSquare size={14} className="fill-amber-500/10" /> Get In Touch
+                  <MessageSquare size={14} className="fill-amber-500/10" /> {t("contact.getInTouch")}
                 </div>
                 <h2 className="text-2xl md:text-[36px] font-[1000] text-slate-900 tracking-tighter leading-[1.1] mb-3">
-                  Have Any <br />
-                  <span className="text-amber-500 italic">Questions?</span>
+                  {t("donate.haveQuestions")} <br />
+                  <span className="text-amber-500 italic">{t("donate.questionsItalic")}</span>
                 </h2>
                 <p className="text-slate-500 text-base md:text-lg font-medium leading-relaxed max-w-xl opacity-80">
-                  Whether you want to know about our impact, join as a volunteer, or need support, our team is here to help you.
+                  {t("donate.teamHelp")}
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 pt-2 md:pt-4">
@@ -229,14 +230,14 @@ export default function DonatePage() {
                     <div className="w-10 h-10 md:w-14 md:h-14 bg-amber-500/10 rounded-xl md:rounded-2xl flex items-center justify-center text-amber-500 mb-3 md:mb-4 group-hover/card:bg-amber-500 group-hover/card:text-white transition-all duration-500">
                       <Phone size={20} />
                     </div>
-                    <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Call Enquiry</p>
+                    <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">{t("donate.callEnquiry")}</p>
                     <p className="text-base md:text-lg font-[900] text-slate-900">+91 7982034823</p>
                   </div>
                   <div className="group/card bg-white p-5 md:p-6 rounded-[1.5rem] md:rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
                     <div className="w-10 h-10 md:w-14 md:h-14 bg-amber-500/10 rounded-xl md:rounded-2xl flex items-center justify-center text-amber-500 mb-3 md:mb-4 group-hover/card:bg-amber-500 group-hover/card:text-white transition-all duration-500">
                       <Mail size={20} />
                     </div>
-                    <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Email Support</p>
+                    <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">{t("donate.emailSupport")}</p>
                     <p className="text-base md:text-lg font-[900] text-slate-900 break-all text-[13px] md:text-lg">info@annapurnamahabahu.com</p>
                   </div>
                 </div>
@@ -247,38 +248,38 @@ export default function DonatePage() {
                 <form className="space-y-3 md:space-y-4" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 gap-3 md:gap-4">
                     <div className="space-y-1.5">
-                      <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-1">Full Name</label>
+                      <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-1">{t("contact.name")}</label>
                       <input
                         type="text"
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        placeholder="Your name here"
+                        placeholder={t("donate.placeholderName")}
                         className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-5 md:px-6 py-3.5 md:py-4 outline-none focus:border-amber-500 focus:ring-8 focus:ring-amber-500/5 transition-all font-bold text-slate-900 text-sm md:text-base placeholder:opacity-40"
                       />
                     </div>
                     <div className="space-y-1.5">
-                      <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-1">Email Address</label>
+                      <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-1">{t("contact.emailLabel")}</label>
                       <input
                         type="email"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        placeholder="example@mail.com"
+                        placeholder={t("donate.placeholderEmail")}
                         className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-5 md:px-6 py-3.5 md:py-4 outline-none focus:border-amber-500 focus:ring-8 focus:ring-amber-500/5 transition-all font-bold text-slate-900 text-sm md:text-base placeholder:opacity-40"
                       />
                     </div>
                     <div className="space-y-1.5">
-                      <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-1">Your Message</label>
+                      <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-1">{t("contact.msg")}</label>
                       <textarea
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
                         required
                         rows={3}
-                        placeholder="Type your message..."
+                        placeholder={t("donate.placeholderMsg")}
                         className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-5 md:px-6 py-3.5 md:py-4 outline-none focus:border-amber-500 focus:ring-8 focus:ring-amber-500/5 transition-all font-bold text-slate-900 text-sm md:text-base placeholder:opacity-40 resize-none"
                       ></textarea>
                     </div>
@@ -288,19 +289,19 @@ export default function DonatePage() {
                     className={`w-full ${status === "success" ? "bg-green-600" : "bg-slate-900 cursor-pointer hover:bg-amber-600"} text-white font-black text-base md:text-lg py-3.5 md:py-5 rounded-xl shadow-2xl transition-all flex items-center justify-center gap-3 active:scale-95 group mt-2 md:mt-3 disabled:opacity-70 disabled:cursor-not-allowed`}
                   >
                     {status === "loading" ? (
-                      <>Sending... <Loader2 className="animate-spin" size={20} /></>
+                      <>{t("contact.sending")} <Loader2 className="animate-spin" size={20} /></>
                     ) : status === "success" ? (
-                      <>Message Sent! <CheckCircle2 size={20} /></>
+                      <>{t("contact.sent")} <CheckCircle2 size={20} /></>
                     ) : (
                       <>
-                        Send Your Message
+                        {t("donate.formTitle")}
                         <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                       </>
                     )}
                   </button>
 
                   {status === "error" && (
-                    <p className="text-red-500 text-center font-bold text-xs mt-2">Failed to send message. Please try again.</p>
+                    <p className="text-red-500 text-center font-bold text-xs mt-2">{t("contact.failed")}</p>
                   )}
                 </form>
               </div>
@@ -310,7 +311,7 @@ export default function DonatePage() {
 
         {/* Professional Trust Bar - CONSISTENCY */}
         <div className="flex flex-wrap justify-center gap-x-4 md:gap-x-10 gap-y-3 mt-6 md:mt-10 py-4 md:py-6 border-t border-slate-100">
-          {["TRANSPARENT", "IMPACTFUL", "DEDICATED", "COMMUNITY-DRIVEN"].map((text) => (
+          {[t("about.transparent"), t("about.impactful"), t("about.dedicated"), t("about.communityDriven")].map((text) => (
             <div key={text} className="flex items-center gap-2 group/trust">
               <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-amber-500 rounded-full group-hover/trust:scale-150 transition-transform shadow-[0_0_10px_rgba(245,158,11,0.5)]" />
               <span className="text-slate-900 text-[9px] md:text-sm lg:text-base font-[1000] tracking-[0.15em] md:tracking-[0.25em] group-hover/trust:text-amber-600 transition-colors cursor-default uppercase">
@@ -325,10 +326,10 @@ export default function DonatePage() {
           <div className="inline-flex items-center gap-2 bg-slate-50 border border-slate-200 px-5 md:px-8 py-2.5 md:py-3.5 rounded-full mb-2 md:mb-3">
             <ShieldCheck size={18} className="text-amber-500" />
             <p className="text-slate-900 text-[10px] md:text-[13px] font-black uppercase tracking-[0.15em] md:tracking-[0.3em]">
-              GOVT RECOGNIZED REGISTRATION: IV/999/2024-DELHI
+              {t("donate.regInfo")}
             </p>
           </div>
-          <p className="text-slate-400 text-[9px] md:text-xs font-bold mt-2 md:mt-3 opacity-60 italic">"Committed to serving humanity since 2014"</p>
+          <p className="text-slate-400 text-[9px] md:text-xs font-bold mt-2 md:mt-3 opacity-60 italic">{t("donate.since")}</p>
         </div>
       </div>
     </div>

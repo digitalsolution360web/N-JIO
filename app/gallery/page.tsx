@@ -4,26 +4,35 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Camera, Sparkles, X, Maximize2 } from "lucide-react";
-
-const galleryImages = [
-  { src: "/jal-sewa.png", title: "Jal Sewa Campaign", cat: "Service" },
-  { src: "/ganesh-puja.png", title: "Cultural Unity", cat: "Events" },
-  { src: "/old-age.png", title: "Support for Elders", cat: "Service" },
-  { src: "/bhandara.png", title: "Food Distribution", cat: "Charity" },
-  { src: "/plantation.png", title: "Green Environment", cat: "Nature" },
-  { src: "/blood-donation.png", title: "Blood Donation Camp", cat: "Service" },
-  { src: "/murti-visersajan.png", title: "Religious Service", cat: "Events" },
-  { src: "/kalash-yatara.png", title: "Community Harmony", cat: "Events" },
-  { src: "/slider1.jpg", title: "Community Gathering", cat: "Events" },
-  { src: "/s10.png", title: "Education Support", cat: "Charity" },
-  { src: "/s8.webp", title: "Health Awareness", cat: "Service" },
-];
+import { useLanguage } from "../context/LanguageContext";
 
 export default function GalleryPage() {
+  const { t } = useLanguage();
+
+  const galleryImages = [
+    { src: "/jal-sewa.png", title: t("gallery.img1.title"), cat: "Service" },
+    { src: "/ganesh-puja.png", title: t("gallery.img2.title"), cat: "Events" },
+    { src: "/old-age.png", title: t("gallery.img3.title"), cat: "Service" },
+    { src: "/bhandara.png", title: t("gallery.img4.title"), cat: "Charity" },
+    { src: "/plantation.png", title: t("gallery.img5.title"), cat: "Nature" },
+    { src: "/blood-donation.png", title: t("gallery.img6.title"), cat: "Service" },
+    { src: "/murti-visersajan.png", title: t("gallery.img7.title"), cat: "Events" },
+    { src: "/kalash-yatara.png", title: t("gallery.img8.title"), cat: "Events" },
+    { src: "/slider1.jpg", title: t("gallery.img9.title"), cat: "Events" },
+    { src: "/s10.png", title: t("gallery.img10.title"), cat: "Charity" },
+    { src: "/s8.webp", title: t("gallery.img11.title"), cat: "Service" },
+  ];
+
   const [filter, setFilter] = useState("All");
   const [selectedImg, setSelectedImg] = useState<string | null>(null);
 
-  const categories = ["All", "Service", "Events", "Charity", "Nature"];
+  const categories = [
+    { id: "All", label: t("gallery.cat.all") },
+    { id: "Service", label: t("gallery.cat.service") },
+    { id: "Events", label: t("gallery.cat.events") },
+    { id: "Charity", label: t("gallery.cat.charity") },
+    { id: "Nature", label: t("gallery.cat.nature") }
+  ];
   const filteredImages = filter === "All" ? galleryImages : galleryImages.filter(img => img.cat === filter);
 
   return (
@@ -33,14 +42,14 @@ export default function GalleryPage() {
         {/* Gallery Header */}
         <div className="flex flex-col items-center text-center mb-10">
           <span className="flex items-center gap-2 text-amber-600 font-bold uppercase tracking-widest text-[12px] mb-3">
-             <Camera size={16} /> Captured Moments
+             <Camera size={16} /> {t("gallery.capturedMoments")}
           </span>
           <h1 className="section-heading text-center">
-             Our <span className="text-amber-500 italic">Gallery</span>
+             {t("gallery.title1")} <span className="text-amber-500 italic">{t("gallery.title2")}</span>
           </h1>
           <div className="heading-underline" />
           <p className="mt-8 text-slate-500 text-xl max-w-2xl font-medium opacity-80">
-            A glimpse into our journey of selfless service and community impact through photos.
+            {t("gallery.desc")}
           </p>
         </div>
 
@@ -48,15 +57,15 @@ export default function GalleryPage() {
         <div className="flex flex-wrap justify-center gap-4 mb-10">
           {categories.map((cat) => (
             <button
-              key={cat}
-              onClick={() => setFilter(cat)}
+              key={cat.id}
+              onClick={() => setFilter(cat.id)}
               className={`px-8 py-3 rounded-2xl font-bold text-sm transition-all ${
-                filter === cat 
+                filter === cat.id 
                 ? "bg-amber-500 text-white shadow-xl shadow-amber-500/20 scale-105" 
                 : "bg-slate-100 text-slate-600 hover:bg-slate-200"
               }`}
             >
-              {cat}
+              {cat.label}
             </button>
           ))}
         </div>
@@ -90,7 +99,7 @@ export default function GalleryPage() {
                   {/* Premium Dark Glass Footer */}
                   <div className="absolute bottom-0 left-0 right-0 bg-slate-900/90 backdrop-blur-xl p-5 text-center border-t border-white/10 transition-all duration-500 group-hover:bg-amber-600/90">
                     <span className="text-amber-400 group-hover:text-white font-black text-[10px] uppercase tracking-[0.3em] mb-1 block transition-colors">
-                      {img.cat}
+                      {categories.find(c => c.id === img.cat)?.label || img.cat}
                     </span>
                     <h3 className="text-white font-[900] text-[17px] leading-tight tracking-tight">
                       {img.title}
