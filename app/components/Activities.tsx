@@ -122,7 +122,7 @@ export default function Activities() {
                     <div className="h-1 w-12 bg-amber-500/20 rounded-full mx-auto group-hover:w-20 group-hover:bg-amber-500 transition-all duration-500" />
                   </div>
                   
-                  <p className="text-slate-600 text-[16px] md:text-[17px] leading-relaxed font-medium opacity-80 group-hover:opacity-100 transition-all duration-500 line-clamp-3">
+                  <p className="text-slate-800 text-[16px] md:text-[17px] leading-relaxed font-semibold opacity-100 transition-all duration-500">
                     {act.desc}
                   </p>
                   

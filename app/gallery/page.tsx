@@ -48,7 +48,7 @@ export default function GalleryPage() {
              {t("gallery.title1")} <span className="text-amber-500 italic">{t("gallery.title2")}</span>
           </h1>
           <div className="heading-underline" />
-          <p className="mt-8 text-slate-500 text-xl max-w-2xl font-medium opacity-80">
+          <p className="mt-8 text-slate-800 text-xl max-w-2xl font-semibold opacity-100">
             {t("gallery.desc")}
           </p>
         </div>

@@ -26,7 +26,7 @@ export default function AboutPage() {
                 {t("about.dedicatedTitle1")} <br />
                 <span className="text-amber-500 italic">{t("about.dedicatedTitle2")}</span> {t("about.dedicatedTitle3")}
               </h1>
-              <p className="text-slate-600 text-[18px] md:text-[22px] leading-relaxed font-medium opacity-80">
+              <p className="text-slate-800 text-[18px] md:text-[22px] leading-relaxed font-semibold opacity-100">
                 {t("about.storyDesc")}
               </p>
               <div className="flex gap-10 pt-4">
@@ -75,7 +75,7 @@ export default function AboutPage() {
                 <h2 className="section-heading text-left">🔶 {t("about.whoWeAre").split(' ')[0]} <span className="text-amber-500">{t("about.whoWeAre").split(' ').slice(1).join(' ')}</span></h2>
                 <div className="heading-underline" />
               </div>
-              <div className="space-y-6 text-slate-600 text-lg leading-relaxed font-medium">
+              <div className="space-y-6 text-slate-800 text-lg leading-relaxed font-semibold">
                 <p>
                   {t("about.whoWeAreDesc1")}
                 </p>
@@ -122,7 +122,7 @@ export default function AboutPage() {
               <Target size={40} />
             </div>
             <h3 className="section-heading !text-white !mb-8">{t("about.mission")}</h3>
-            <p className="text-slate-400 text-xl leading-relaxed font-medium">
+            <p className="text-slate-200 text-xl leading-relaxed font-semibold">
               {t("about.missionDesc")}
             </p>
           </div>
@@ -134,7 +134,7 @@ export default function AboutPage() {
               <Eye size={40} />
             </div>
             <h3 className="section-heading !text-white !mb-8">{t("about.vision")}</h3>
-            <p className="text-blue-50 text-xl leading-relaxed font-medium opacity-90">
+            <p className="text-white text-xl leading-relaxed font-semibold opacity-100">
               {t("about.visionDesc")}
             </p>
           </div>
@@ -195,7 +195,7 @@ export default function AboutPage() {
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">{t("about.ctaTitle").split(' ').slice(2).join(' ')}</span>
               </h2>
 
-              <p className="text-slate-400 text-xl md:text-2xl max-w-3xl mx-auto font-medium leading-relaxed mb-12">
+              <p className="text-slate-200 text-xl md:text-2xl max-w-3xl mx-auto font-semibold leading-relaxed mb-12">
                 {t("about.ctaDesc")}
               </p>
 
@@ -244,7 +244,7 @@ export default function AboutPage() {
             <h2 className="text-white text-2xl md:text-5xl font-[1000] tracking-tight leading-tight">
               {t("about.readyImpact").split(' ').slice(0, 4).join(' ')} <span className="text-amber-500 italic underline decoration-amber-500/30 underline-offset-8">{t("about.readyImpact").split(' ').slice(4).join(' ')}</span>
             </h2>
-            <p className="text-slate-300 text-[15px] md:text-xl font-medium max-w-3xl mx-auto leading-relaxed opacity-80">
+            <p className="text-slate-200 text-[15px] md:text-xl font-semibold max-w-3xl mx-auto leading-relaxed opacity-100">
               {t("about.readyDesc")}
             </p>
 

@@ -69,7 +69,7 @@ export default function Hero() {
               {t("hero.titleLine3")}
             </h1>
             
-            <p className="text-slate-600 text-[18px] md:text-[21px] leading-relaxed max-w-2xl font-medium opacity-80">
+            <p className="text-slate-800 text-[18px] md:text-[21px] leading-relaxed max-w-2xl font-semibold opacity-100">
               {t("hero.description")}
             </p>
 

@@ -87,7 +87,7 @@ export default function ContactPage() {
             {t("contact.title1")} <span className="text-amber-500 italic">{t("contact.title2")}</span>
           </h1>
           <div className="h-1.5 w-16 md:w-24 bg-amber-500 rounded-full mt-3 md:mt-4" />
-          <p className="mt-5 md:mt-8 text-slate-500 text-base md:text-xl max-w-2xl font-medium opacity-80 px-4">
+          <p className="mt-5 md:mt-8 text-slate-800 text-base md:text-xl max-w-2xl font-semibold opacity-100 px-4">
             {t("contact.desc")}
           </p>
         </div>

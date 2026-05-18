@@ -120,7 +120,7 @@ export default function ServicesPage() {
 
           <div className="heading-underline h-2 w-24" />
 
-          <p className="mt-6 text-slate-600 text-lg md:text-xl font-medium max-w-4xl leading-relaxed opacity-90 italic">
+          <p className="mt-6 text-slate-800 text-lg md:text-xl font-semibold max-w-4xl leading-relaxed opacity-100 italic">
             {t("services.quote")}
           </p>
         </div>
@@ -159,7 +159,7 @@ export default function ServicesPage() {
                 <h3 className="text-2xl font-[900] text-slate-900 group-hover:text-amber-600 transition-colors leading-[1.2] tracking-tight">
                   {service.title}
                 </h3>
-                <p className="text-slate-500 text-[15px] leading-relaxed font-medium opacity-80 group-hover:opacity-100 transition-opacity">
+                <p className="text-slate-700 text-[15px] leading-relaxed font-semibold opacity-100 transition-opacity">
                   {service.desc}
                 </p>
 
@@ -194,7 +194,7 @@ export default function ServicesPage() {
                 {t("about.ctaTitle").split(' ').slice(0, 2).join(' ')} <br />
                 <span className="text-amber-500 italic">{t("about.ctaTitle").split(' ').slice(2).join(' ')}</span>
               </h2>
-              <p className="text-[20px] md:text-[26px] text-slate-300 font-medium leading-relaxed max-w-3xl mx-auto">
+              <p className="text-[20px] md:text-[26px] text-slate-200 font-semibold leading-relaxed max-w-3xl mx-auto">
                 {t("about.ctaDesc")}
               </p>
               <div className="flex flex-col sm:flex-row gap-8 justify-center items-center pt-8">

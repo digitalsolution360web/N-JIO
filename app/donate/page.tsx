@@ -102,7 +102,7 @@ export default function DonatePage() {
             {t("donate.title1")} <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600 italic">{t("donate.title2")}</span> {t("donate.title3")}
           </motion.h1>
           <div className="h-1 w-20 md:w-24 bg-gradient-to-r from-amber-500 to-orange-600 rounded-full mb-4 md:mb-6" />
-          <p className="text-slate-600 text-base md:text-xl font-medium max-w-3xl leading-relaxed opacity-90 italic">
+          <p className="text-slate-800 text-base md:text-xl font-semibold max-w-3xl leading-relaxed opacity-100 italic">
             {t("donate.quote")}
           </p>
         </div>
@@ -221,7 +221,7 @@ export default function DonatePage() {
                   {t("donate.haveQuestions")} <br />
                   <span className="text-amber-500 italic">{t("donate.questionsItalic")}</span>
                 </h2>
-                <p className="text-slate-500 text-base md:text-lg font-medium leading-relaxed max-w-xl opacity-80">
+                <p className="text-slate-700 text-base md:text-lg font-semibold leading-relaxed max-w-xl opacity-100">
                   {t("donate.teamHelp")}
                 </p>
 

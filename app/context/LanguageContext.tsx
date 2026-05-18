@@ -431,7 +431,7 @@ const translations: Record<Language, Record<string, string>> = {
     "donate.supportCause": "हमारे उद्देश्य का समर्थन करें",
     "donate.title1": "उदारता का",
     "donate.title2": "हर कार्य",
-    "donate.title3": "मेन रखता है",
+    "donate.title3": "मायने रखता है",
     "donate.quote": "\"आपका उपहार हमारे कार्यक्रमों के लिए आधार प्रदान करता है और हमें हजारों जरूरतमंद लोगों तक पहुंचने में मदद करता है।\"",
     "donate.scanToPay": "भुगतान करने के लिए स्कैन करें",
     "donate.trustedGateway": "विश्वसनीय भुगतान गेटवे",

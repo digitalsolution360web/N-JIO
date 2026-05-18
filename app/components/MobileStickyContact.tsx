@@ -2,8 +2,10 @@
 
 import { Phone, MessageCircle } from "lucide-react";
 import Link from "next/link";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function MobileStickyContact() {
+  const { t } = useLanguage();
   return (
     <div className="md:hidden fixed bottom-0 left-0 right-0 z-[100] flex h-16 bg-white border-t border-slate-100 shadow-[0_-10px_30px_rgba(0,0,0,0.1)] overflow-hidden">
       {/* Left: Enquiry Now (Amber/Orange Theme) */}
@@ -11,7 +13,7 @@ export default function MobileStickyContact() {
         href="/donate"
         className="flex-[2] bg-amber-500 hover:bg-amber-600 flex items-center justify-center text-white font-black text-[16px] uppercase tracking-wider transition-colors active:scale-95"
       >
-        Donate Now
+        {t("nav.donate")}
       </Link>
 
       {/* Middle: WhatsApp */}

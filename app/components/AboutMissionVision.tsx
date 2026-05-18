@@ -56,11 +56,11 @@ export default function AboutMissionVision() {
                 <div className="heading-underline" />
               </div>
 
-              <div className="space-y-6 text-slate-600 text-lg md:text-xl leading-relaxed font-medium">
-                <p className="text-slate-900 font-bold italic border-l-4 border-amber-500 pl-6 py-2 bg-amber-50/50 rounded-r-xl">
+              <div className="space-y-6 text-slate-800 text-lg md:text-xl leading-relaxed font-medium">
+                <p className="text-slate-950 font-bold italic border-l-4 border-amber-500 pl-6 py-2 bg-amber-50/50 rounded-r-xl">
                   {t("home.about.desc1")}
                 </p>
-                <p className="opacity-80">
+                <p className="opacity-100 text-slate-800">
                   {t("home.about.desc2")}
                 </p>
               </div>
@@ -143,7 +143,7 @@ export default function AboutMissionVision() {
                   <Heart size={28} />
                 </div>
                 <h4 className="text-lg font-[900] mb-4 text-slate-900">{item.title}</h4>
-                <p className="text-slate-500 text-lg leading-relaxed font-medium opacity-80">{item.desc}</p>
+                <p className="text-slate-700 text-lg leading-relaxed font-semibold opacity-100">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -165,7 +165,7 @@ export default function AboutMissionVision() {
             <h2 className="text-2xl md:text-[38px] font-[900] leading-tight tracking-tight">
               {t("home.cta.title")} <span className="text-amber-500 italic">{t("home.cta.titleHighlight")}</span>
             </h2>
-            <p className="text-[17px] md:text-[22px] text-slate-400 max-w-2xl mx-auto leading-relaxed font-medium">
+            <p className="text-[17px] md:text-[22px] text-slate-200 max-w-2xl mx-auto leading-relaxed font-semibold">
               {t("home.cta.desc")}
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center pt-6">
