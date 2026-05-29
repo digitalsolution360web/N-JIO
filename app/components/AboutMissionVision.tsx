@@ -20,7 +20,7 @@ export default function AboutMissionVision() {
               viewport={{ once: true }}
               className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl border-[12px] border-white"
             >
-              <img src="/ab1.jpg" alt="About NGO" className="w-full h-auto" />
+              <img src="/bhagawat.webp" alt="About NGO" className="w-full h-auto" />
             </motion.div>
 
             <motion.div

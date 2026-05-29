@@ -6,8 +6,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
-  { url: "/slider1.jpg" },
-  { url: "/s10.png" },
+  { url: "/banner1.webp" },
+  { url: "/banner2.webp" },
   { url: "/s8.webp" },
 ];
 
@@ -74,9 +74,8 @@ export default function HeroSlider() {
           <button
             key={idx}
             onClick={() => setCurrent(idx)}
-            className={`h-2 transition-all duration-300 rounded-full ${
-              idx === current ? "w-10 bg-amber-500" : "w-2 bg-white/50"
-            }`}
+            className={`h-2 transition-all duration-300 rounded-full ${idx === current ? "w-10 bg-amber-500" : "w-2 bg-white/50"
+              }`}
           />
         ))}
       </div>

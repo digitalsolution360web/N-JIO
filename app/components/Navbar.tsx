@@ -69,21 +69,21 @@ export default function Navbar() {
           }`}
       >
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-11 h-11 md:w-14 md:h-14 overflow-hidden rounded-full border-2 border-amber-500 shadow-lg group-hover:scale-110 transition-transform duration-500">
+          <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
+            <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 overflow-hidden rounded-full border-2 border-amber-500 shadow-lg group-hover:scale-110 transition-transform duration-500">
               <Image
                 src="/logo.jpg"
                 alt="NGO Logo"
                 fill
-                sizes="(max-width: 768px) 44px, 56px"
+                sizes="(max-width: 768px) 40px, 56px"
                 className="object-cover"
               />
             </div>
             <div className="flex flex-col">
-              <span className={`text-[17px] md:text-[22px] font-black leading-none tracking-tight ${isScrolled ? "text-slate-900" : "text-black"}`}>
+              <span className={`text-[13px] sm:text-[17px] md:text-[22px] font-black leading-none tracking-tight ${isScrolled ? "text-slate-900" : "text-black"}`}>
                 {t("nav.logoName1")} <span className="text-amber-600">{t("nav.logoName2")}</span>
               </span>
-              <span className={`text-[10px] md:text-[12px] font-bold tracking-[0.2em] uppercase opacity-60 ${isScrolled ? "text-slate-600" : "text-slate-800"}`}>
+              <span className={`text-[8px] sm:text-[10px] md:text-[12px] font-bold tracking-[0.2em] uppercase opacity-60 ${isScrolled ? "text-slate-600" : "text-slate-800"}`}>
                 {t("hero.subtitle")}
               </span>
             </div>
@@ -117,13 +117,13 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Toggle */}
-          <div className="flex items-center gap-4 lg:hidden">
+          <div className="flex items-center gap-2 sm:gap-4 lg:hidden">
             <LanguageSwitcher />
             <button
-              className={`p-2 rounded-xl ${isScrolled ? "bg-amber-50 text-amber-600" : "bg-slate-100 text-slate-800"}`}
+              className={`p-1.5 sm:p-2 rounded-xl ${isScrolled ? "bg-amber-50 text-amber-600" : "bg-slate-100 text-slate-800"}`}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
-              {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+              {mobileMenuOpen ? <X size={22} className="sm:w-[26px] sm:h-[26px]" /> : <Menu size={22} className="sm:w-[26px] sm:h-[26px]" />}
             </button>
           </div>
         </div>
@@ -134,13 +134,13 @@ export default function Navbar() {
               initial={{ opacity: 0, scale: 0.95, y: -20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: -20 }}
-              className="absolute top-[calc(100%+8px)] left-4 right-4 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] p-6 md:p-8 flex flex-col gap-4 lg:hidden border border-slate-100 rounded-[2rem] md:rounded-[2.5rem]"
+              className="absolute top-[calc(100%+8px)] left-4 right-4 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] p-4 sm:p-6 md:p-8 flex flex-col gap-2.5 sm:gap-4 lg:hidden border border-slate-100 rounded-[1.5rem] sm:rounded-[2rem] md:rounded-[2.5rem]"
             >
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-[17px] font-bold text-slate-900 flex items-center justify-between group py-1"
+                  className="text-[15px] sm:text-[17px] font-bold text-slate-900 flex items-center justify-between group py-0.5 sm:py-1"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.name}
@@ -149,7 +149,7 @@ export default function Navbar() {
               ))}
               <Link
                 href="/donate"
-                className="bg-amber-500 text-white py-4 rounded-[1.2rem] text-center font-black text-lg shadow-lg shadow-amber-500/20 mt-2"
+                className="bg-amber-500 text-white py-3 sm:py-4 rounded-[1rem] sm:rounded-[1.2rem] text-center font-black text-base sm:text-lg shadow-lg shadow-amber-500/20 mt-1 sm:mt-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t("nav.donate")}
